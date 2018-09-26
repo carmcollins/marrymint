@@ -1,16 +1,37 @@
 import React from "react";
+import styles from "./Nav.css";
 
 const Nav = () =>
-    <nav>
-        <div className="nav-wrapper">
-        <a className="brand-logo">Marrymint</a>
-        <ul id="nav-mobile" className="right hide-on-med-and-down">
-            <li><a href="#">Page 1</a></li>
-            <li><a href="#">Page 2</a></li>
-            <li><a href="#">Page 3</a></li>
+
+    <div>
+        {/* Desktop Side Nav */}
+        <ul className="sidenav sidenav-fixed show-on-small show-on-medium show-on-large indigo lighten-4">
+            <li className="brand-logo center">MARRYMINT</li>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">To Do List</a></li>
+            <li><a href="#">Timeline</a></li>
+            <li><a href="#">Vendors</a></li>
+            <li><a href="#">Budget</a></li>
+            <li><a href="#">RSVPs</a></li>
         </ul>
-        </div>
-    </nav>
+
+        {/* Mobile Pop Out Side Nav */}
+        <nav className="hide-on-large-only indigo lighten-4">
+            <div className="nav-wrapper">
+                <a className="brand-logo black-text">MARRYMINT</a>
+                <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons black-text">menu</i></a>
+                <ul className="sidenav" id="mobile-demo">
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">To Do List</a></li>
+                    <li><a href="#">Timeline</a></li>
+                    <li><a href="#">Vendors</a></li>
+                    <li><a href="#">Budget</a></li>
+                    <li><a href="#">RSVPs</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
 ;
 
 export default Nav;
