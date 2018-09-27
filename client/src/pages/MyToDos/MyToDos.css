@@ -1,0 +1,14 @@
+.subtitle {
+    font-family: "Josefin Sans", sans-serif;
+}
+
+.collection {
+    width: 75%;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 691px) {
+    .collection {
+        width: 100%;
+    }
+}
