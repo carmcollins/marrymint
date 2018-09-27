@@ -2,11 +2,24 @@ import React from "react";
 import styles from "./Nav.css";
 
 const Nav = () =>
-
     <div>
-        {/* Desktop Side Nav */}
-        <ul className="sidenav sidenav-fixed show-on-small show-on-medium show-on-large indigo lighten-4">
-            <li className="brand-logo center">MARRYMINT</li>
+        {/* Main Nav */}
+        <nav className="navbar-fixed">
+            <div className="nav-wrapper teal lighten-3">
+            <a href="#" className="brand-logo">marrymint</a>
+            <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+            <ul className="right hide-on-med-and-down">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">To Do List</a></li>
+                <li><a href="#">Timeline</a></li>
+                <li><a href="#">Vendors</a></li>
+                <li><a href="#">Budget</a></li>
+                <li><a href="#">RSVPs</a></li>
+            </ul>
+            </div>
+        </nav>
+        {/* Mobile Nav */}
+        <ul className="sidenav teal lighten-3" id="mobile-demo">
             <li><a href="#">Dashboard</a></li>
             <li><a href="#">To Do List</a></li>
             <li><a href="#">Timeline</a></li>
@@ -14,24 +27,7 @@ const Nav = () =>
             <li><a href="#">Budget</a></li>
             <li><a href="#">RSVPs</a></li>
         </ul>
-
-        {/* Mobile Pop Out Side Nav */}
-        <nav className="hide-on-large-only indigo lighten-4">
-            <div className="nav-wrapper">
-                <a className="brand-logo black-text">MARRYMINT</a>
-                <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons black-text">menu</i></a>
-                <ul className="sidenav" id="mobile-demo">
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="#">To Do List</a></li>
-                    <li><a href="#">Timeline</a></li>
-                    <li><a href="#">Vendors</a></li>
-                    <li><a href="#">Budget</a></li>
-                    <li><a href="#">RSVPs</a></li>
-                </ul>
-            </div>
-        </nav>
     </div>
-    
 ;
 
 export default Nav;

@@ -1,3 +1,10 @@
-.topnav {
-    padding: 10px;
+.brand-logo {
+    font-family: "Josefin Sans", sans-serif;
+    margin-left: 30px;
+}
+
+@media only screen and (max-width: 992px) {
+    .brand-logo {
+        margin-left: 0px;
+    }
 }
