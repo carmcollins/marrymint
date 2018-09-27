@@ -1,9 +1,9 @@
 import React from "react";
-import styles from "./MyToDos.css";
+import styles from "./ToDos.css";
 
 const ToDos = () =>
     <div className="container">
-        <h4 className="subtitle center">10-12 Months Out</h4>
+        <h4 className="subtitle center">12 Months Out</h4>
             <ul className="collection">
                 <li className="collection-item">
                     <div>Collect design inspiration
@@ -41,7 +41,7 @@ const ToDos = () =>
                     </div>
                 </li>
             </ul>
-        <h4 className="subtitle center">6-9 Months Out</h4>
+        <h4 className="subtitle center">9 Months Out</h4>
             <ul className="collection">
                 <li className="collection-item">
                     <div>Shop for a wedding dress, shoes, and accessories
@@ -84,7 +84,7 @@ const ToDos = () =>
                     </div>
                 </li>
             </ul>
-        <h4 className="subtitle center">4-6 Months Out</h4>
+        <h4 className="subtitle center">6 Months Out</h4>
             <ul className="collection">
                 <li className="collection-item">
                     <div>Set up a registry
@@ -122,7 +122,7 @@ const ToDos = () =>
                     </div>
                 </li>
             </ul>
-        <h4 className="subtitle center">2-4 Months Out</h4>
+        <h4 className="subtitle center">4 Months Out</h4>
             <ul className="collection">
                 <li className="collection-item">
                     <div>Schedule hair and makeup trials and book stylists
@@ -150,7 +150,7 @@ const ToDos = () =>
                     </div>
                 </li>
             </ul>
-        <h4 className="subtitle center">1-2 Months Out</h4>
+        <h4 className="subtitle center">2 Months Out</h4>
             <ul className="collection">
                 <li className="collection-item">
                     <div>Obtain marriage license
