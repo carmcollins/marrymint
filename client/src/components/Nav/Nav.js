@@ -24,6 +24,12 @@ const Nav = () =>
             <li><Link to="/vendors">Vendors</Link></li>
             <li><Link to="/rsvp">RSVPs</Link></li>
         </ul>
+        {/* Home Page Nav */}
+        {/* <nav className="navbar-fixed">
+            <div className="nav-wrapper teal lighten-3">
+                <a href="/" className="brand-logo home-logo center">marrymint</a>
+            </div>
+        </nav> */}
     </div>
 ;
 
