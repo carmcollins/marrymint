@@ -39,7 +39,20 @@ export default {
   // Saves an article to the database
   addRSVP: function(newRSVP) {
     return axios.post("/api/rsvps", newRSVP);
+  },
+
+
+  //VENDORS
+  getVendors: function() {
+    return axios.get("/api/vendors");
+  },
+  // Gets the book with the given id
+  getVendor: function(id) {
+    return axios.get("/api/vendors/" + id);
   }
+
+
+
 
 
 
