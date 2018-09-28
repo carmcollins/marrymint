@@ -1,8 +1,10 @@
 import React from "react";
+import Heading from "../../components/Heading"
 import "./ToDos.css";
 
 const ToDos = () =>
     <div>
+        <Heading title="To Do List" subtitle="Marrymint helps you keep track of all the little details in one place. We belive that wedding planning should be fun, not stressful." />
         <div className="container">
         <h4 className="subtitle center">12 Months Out</h4>
             <ul className="collection">
