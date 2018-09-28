@@ -9,6 +9,7 @@ router.route("/")
 router
   .route("/:id")
   .get(vendorController.findById);
+  //need to populate with user id??
   
 
 module.exports = router;

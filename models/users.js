@@ -6,7 +6,12 @@ const usersSchema = new Schema({
   brideName: { type: String, required: true },
   groomName: { type: String, required: true },
   location: { type: String, required: true },
-  dateOfWedding: { type: Date}
+  dateOfWedding: { type: Date},
+  vendors: {type: Schema.Types.ObjectId,
+    ref: 'Vendors'},
+  tasks:{ type: Schema.Types.ObjectId,
+      ref: 'Tasks'
+  }
 });
 
 const Users = mongoose.model("Users", usersSchema);

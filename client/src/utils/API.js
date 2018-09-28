@@ -49,12 +49,18 @@ export default {
   // Gets the book with the given id
   getVendor: function(id) {
     return axios.get("/api/vendors/" + id);
+  },
+
+
+
+  //TASKS
+  getTasks: function() {
+    return axios.get("/api/tasks");
+  },
+  // Gets the task with the given id
+  getTask: function(id) {
+    return axios.get("/api/tasks/" + id);
   }
-
-
-
-
-
 
 
 };
