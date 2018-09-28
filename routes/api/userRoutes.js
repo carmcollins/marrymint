@@ -3,7 +3,7 @@ const usersController = require("../../controllers/usersController");
 
   
 
-// Matches with "/api/users/:id"
+// Matches with "/api/users/"
 router
   .route("/:id")
   .get(usersController.findById);
