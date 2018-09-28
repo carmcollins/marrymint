@@ -1,8 +1,9 @@
 import React from "react";
+import Heading from "../../components/Heading";
 
 const FindVendors = () =>
     <div>
-        <h1>This is the find vendors page</h1>
+        <Heading title="Find Vendors" subtitle="We've hand-selected all of our favorite vendors in town to ensure that you'll have the best team working with you on your wedding day." />
     </div>
 ;
 

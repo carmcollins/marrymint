@@ -1,8 +1,9 @@
 import React from "react";
+import Heading from "../../components/Heading";
 
 const RSVPs = () =>
     <div>
-        <h1>This is the RSVP page</h1>
+        <Heading title="RSVPs" subtitle="Input all of your wedding guests' names into our database, and easily track their attendance as your invite responses come in." />
     </div>
 ;
 
