@@ -2,7 +2,7 @@ import React from "react";
 
 const Vendors = () =>
     <div>
-        <h1>This is the vendors page</h1>
+        <p>This is the vendors page</p>
     </div>
 ;
 

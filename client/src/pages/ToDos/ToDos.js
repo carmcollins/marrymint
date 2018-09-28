@@ -1,8 +1,9 @@
 import React from "react";
-import styles from "./ToDos.css";
+import "./ToDos.css";
 
 const ToDos = () =>
-    <div className="container">
+    <div>
+        <div className="container">
         <h4 className="subtitle center">12 Months Out</h4>
             <ul className="collection">
                 <li className="collection-item">
@@ -17,7 +18,7 @@ const ToDos = () =>
                 </li>
                 <li className="collection-item">
                     <div>Book ceremony and reception venues
-                    <a className="#!" className="secondary-content"><i className="material-icons">done</i></a>
+                    <a href="#!" className="secondary-content"><i className="material-icons">done</i></a>
                     </div>
                 </li>
                 <li className="collection-item">
@@ -55,7 +56,7 @@ const ToDos = () =>
                 </li>
                 <li className="collection-item">
                     <div>Reserve hotel blocks for out of town guests
-                    <a className="#!" className="secondary-content"><i className="material-icons">done</i></a>
+                    <a href="#!" className="secondary-content"><i className="material-icons">done</i></a>
                     </div>
                 </li>
                 <li className="collection-item">
@@ -98,7 +99,7 @@ const ToDos = () =>
                 </li>
                 <li className="collection-item">
                     <div>Shop for groom and wedding party attire
-                    <a className="#!" className="secondary-content"><i className="material-icons">done</i></a>
+                    <a href="#!" className="secondary-content"><i className="material-icons">done</i></a>
                     </div>
                 </li>
                 <li className="collection-item">
@@ -136,7 +137,7 @@ const ToDos = () =>
                 </li>
                 <li className="collection-item">
                     <div>Hire lighting specialist
-                    <a className="#!" className="secondary-content"><i className="material-icons">done</i></a>
+                    <a href="#!" className="secondary-content"><i className="material-icons">done</i></a>
                     </div>
                 </li>
                 <li className="collection-item">
@@ -164,7 +165,7 @@ const ToDos = () =>
                 </li>
                 <li className="collection-item">
                     <div>Arrange seating chart
-                    <a className="#!" className="secondary-content"><i className="material-icons">done</i></a>
+                    <a href="#!" className="secondary-content"><i className="material-icons">done</i></a>
                     </div>
                 </li>
                 <li className="collection-item">
@@ -206,6 +207,7 @@ const ToDos = () =>
                     </div>
                 </li>
             </ul>
+        </div>
     </div>
 ;
 
