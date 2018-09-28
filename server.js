@@ -1,9 +1,30 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const passport = require("passport");
+const {Strategy: JwtStrategy, ExtractJwt} = require("passport-jwt"); 
+const jsonWebToken = require("jsonwebtoken");
+const bcrypt = require("bcrypt-nodejs");
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
+const passportOptions = {
+  jwtFromRequest : ExtractJwt.fromAuthHeaderAsBearerToken(),
+  secretOrKey: "keyboard_cat"
+}
+
+passport.use(new JwtStrategy(
+  passportOptions,
+  (jwt_payload, done) => {
+    Users.findOne({_id: jwt_payload._id}, (err, user) => {
+      if(user) {
+        done (null, user)
+      } else {
+        done (null, false)
+      }
+    })
+  }
+));
 
 // Configure body parser for AJAX requests
 app.use(bodyParser.urlencoded({ extended: false }));

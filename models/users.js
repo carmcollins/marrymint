@@ -3,6 +3,8 @@ const Schema = users.Schema;
 
 const usersSchema = new Schema({
   _id: { type: Schema.Types.ObjectId, required: true },
+  email:{ type: String, required: true , unique: true},
+  password:{ type: String, required: true},
   brideName: { type: String, required: true },
   groomName: { type: String, required: true },
   location: { type: String, required: true },
@@ -13,6 +15,26 @@ const usersSchema = new Schema({
       ref: 'Tasks'
   }
 });
+
+UsersSchema.pre("save", function (next) {
+  if(this.isModified("password") || this.isNew) {
+    bcrypt.hash(this.password, null, null, (err, hash) =>{
+      if(err){
+        console.log(err);
+        return next(err);
+      }
+      this.password = hash;
+      return next();
+    })
+  }
+});
+
+UsersSchema.methods.comparePassword = function(pass, cb){
+  bcrypt.compare(pass, this.password, function(err, isMatch){
+    if (err){return cb(errr);}
+    cb(null, isMatch);
+  })
+}
 
 const Users = mongoose.model("Users", usersSchema);
 

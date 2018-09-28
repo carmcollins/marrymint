@@ -2,10 +2,36 @@ import axios from "axios";
 
 
 export default {
+
   //USER
-  // Gets user from login id
+  JWT: false,
+  setJWT: function(token){
+    this.JWT = token;
+  },
+   getJWT: function(){
+     return this.JWT;
+   },
+   isLoggedIn: function(){
+     return this.JWT != false;
+   },
+   logout: function(){
+     this.JWT = false;
+   },
+   hello: function(){
+     return axios.get("/dashboard", {headers:{Authorization: `Bearer ${this.JWT}`}});
+   },
+  // Gets user from id
   getUser: function(id) {
     return axios.get("/api/users/" + id);
+  },
+  // Login user
+  loginUser: function(email, password){
+   return axios.post("/api/users/login", {email, password}).then((response) => {
+if(response.data.token){
+  this.setJWT(response.data.token);
+}
+return Promise.resolve(response);
+   });
   },
   // Add new user to the database
   saveUser: function(newUser) {

@@ -12,5 +12,9 @@ router
   .route("/")
   .post(usersController.create);
 
+  router
+  .route("/login")
+  .post(usersController.findOne);
+
 
 module.exports = router;
