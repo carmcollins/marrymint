@@ -1,4 +1,5 @@
 const db = require("../models");
+require('dotenv').config();
 
 // Defining methods for the userController
 module.exports = {
@@ -20,7 +21,7 @@ module.exports = {
               if (err || !isMatch) {
                 return res.status(401).send({success: false}); 
               } else {
-                const token = jwt.sign({ _id: user._id }, "keyboard_cat");
+                const token = jwt.sign({ _id: user._id }, process.env.SECRET_KEY);
                 return res.status(200).send({success: true, token: token});
               }
             });
