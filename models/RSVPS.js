@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-const Schema = RSVPS.Schema;
+const Schema = mongoose.Schema;
 
 const RSVPSSchema = new Schema({
-  _id: { type: Schema.Types.ObjectId, required: true },
+  // _id: { type: Schema.Types.ObjectId, required: true },
   name: { type: String, required: true },
   invited: { type: Boolean, required: true, default: true },
   attending: { type: Boolean, required: true, default: false },

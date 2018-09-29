@@ -15,12 +15,12 @@ router
   router
   .route("/:id")
   .get(rsvpController.findById)
-  .put(rsvpController.updateNotAttend);
+  // .put(rsvpController.updateNotAttend);
 
   router
   .route("/:id")
   .get(rsvpController.findById)
-  .put(rsvpController.updateAttend);
+  // .put(rsvpController.updateAttend);
 
 
 module.exports = router;
