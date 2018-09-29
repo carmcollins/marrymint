@@ -3,14 +3,22 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const {Strategy: JwtStrategy, ExtractJwt} = require("passport-jwt"); 
-const jsonWebToken = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt-nodejs");
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+// Configure body parser for AJAX requests
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+// Serve up static assets
+app.use(express.static("client/public"));
+// app.use(express.static("client/build"));
+
 const passportOptions = {
   jwtFromRequest : ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: "keyboard_cat"
+  secretOrKey: process.env.SECRET_KEY
 }
 
 passport.use(new JwtStrategy(
@@ -25,13 +33,6 @@ passport.use(new JwtStrategy(
     })
   }
 ));
-
-// Configure body parser for AJAX requests
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-// Serve up static assets
-app.use(express.static("client/public"));
-// app.use(express.static("client/build"));
 
 // Add routes, both API and view
 app.use(routes);

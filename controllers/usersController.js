@@ -1,5 +1,7 @@
 const db = require("../models");
 require('dotenv').config();
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt-nodejs");
 
 // Defining methods for the userController
 module.exports = {
