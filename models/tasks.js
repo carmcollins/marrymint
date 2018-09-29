@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-const Schema = tasks.Schema;
+const Schema = mongoose.Schema;
 
 const tasksSchema = new Schema({
-  _id: { type: Schema.Types.ObjectId, required: true },
+  // _id: { type: Schema.Types.ObjectId, required: true },
   timeCategory: { type: String, required: true },
   completed: { type: Boolean, required: true, default: false }
 });
