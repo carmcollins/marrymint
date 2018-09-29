@@ -43,7 +43,26 @@ class Home extends Component {
             groomName: "",
             location: "",
             dateOfWedding: ""
-          });
+        });
+    };
+
+    handleFormLogin = event => {
+        event.preventDefault();
+        if (this.state.email && this.state.password) {
+            API.loginUser({
+                email: this.state.email,
+                password: this.state.password
+            })
+                .then(function (res) {
+                    API.setJWT(res.data.token);
+                });
+        }
+
+        //Clears form
+        this.setState({
+            email: "",
+            password: ""
+        });
     };
 
 
@@ -115,17 +134,19 @@ class Home extends Component {
                                     <h4 className="red-text text-accent-1">Eat, Drink, & Be Married</h4>
                                     <div className="row">
                                         <div className="input-field col s12">
-                                            <input id="login-email" type="email" className="validate" />
+                                            <input id="login-email" type="email" className="validate" name="email" value={this.state.email}
+                                                onChange={this.handleInputChange} />
                                             <label htmlFor="login-email">Email</label>
                                         </div>
                                         <div className="input-field col s12">
-                                            <input id="login-password" type="password" className="validate" />
+                                            <input id="login-password" type="password" className="validate" name="password" value={this.state.password}
+                                                onChange={this.handleInputChange} />
                                             <label htmlFor="login-password">Password</label>
                                         </div>
                                     </div>
                                     <br />
                                     <div className="center">
-                                        <a id="login-btn" className="waves-effect waves-teal btn teal lighten-3">Log In</a>
+                                        <a id="login-btn" className="waves-effect waves-teal btn teal lighten-3" onClick={this.handleFormLogin}>Log In</a>
                                     </div>
                                     <br />
                                     <div className="center">

@@ -13,18 +13,28 @@ module.exports = {
   },
 
   findOne: function (req, res) {
+    console.log("Email: " + req.body.email.email);
+    console.log("PW: " + req.body.email.password);
     db.Users
       .findOne({
-        email: req.body.email
+        email: req.body.email.email
       }, (err, user) => {
         if (!user) {
+          console.log("error email: " + err);
           return res.status(401).send({ success: false });
         } else {
-          user.comparePassword(req.body.password, (err, isMatch) => {
+          user.comparePassword(req.body.email.password, (err, isMatch) => {
             if (err || !isMatch) {
+              console.log("error password: " + err);
               return res.status(401).send({ success: false });
-            } else {
+            }
+            else {
+              console.log("successful login: " + isMatch);
+
               const token = jwt.sign({ _id: user._id }, process.env.SECRET_KEY);
+
+              console.log("TOKEN: " + token);
+
               return res.status(200).send({ success: true, token: token });
             }
           });
@@ -33,7 +43,7 @@ module.exports = {
 
   },
   create: function (req, res) {
-    
+
     const newUser = {
       email: req.body.email,
       password: req.body.password,
