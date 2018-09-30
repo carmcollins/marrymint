@@ -11,9 +11,8 @@ const UsersSchema = new Schema({
   dateOfWedding: { type: Date },
   vendors: {type: Schema.Types.ObjectId,
     ref: 'Vendors'},
-  tasks:{ type: Schema.Types.ObjectId,
-      ref: 'Tasks'
-  }
+  tasks:[tasksSchema],
+  RSVPS:[RSVPSchema]
 });
 
 UsersSchema.pre("save", function (next) {

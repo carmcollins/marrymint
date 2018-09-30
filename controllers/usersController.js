@@ -51,6 +51,30 @@ module.exports = {
       groomName: req.body.groom,
       location: req.body.location,
       dateOfWedding: req.body.date,
+      tasks:[
+        { task: "Collect design inspiration",
+          timeCategory: 12,
+          completed: false
+        },
+        { task: "Set a budget",
+        timeCategory: 12,
+        completed: false
+      },
+      { task: "Book ceremony and reception venues",
+      timeCategory: 12,
+      completed: false
+    },
+    { task: "Compile your guest list and collect addresses",
+    timeCategory: 12,
+    completed: false
+  },
+  { task: "Choose your wedding party",
+  timeCategory: 12,
+  completed: false
+},
+
+
+      ]
     };
     console.log(newUser);
     db.Users
