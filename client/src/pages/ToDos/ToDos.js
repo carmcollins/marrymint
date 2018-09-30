@@ -18,7 +18,9 @@ class ToDos extends Component {
 
     };
 
-    //handleCompleted
+    handleCompleted(){
+
+    }
 
     componentDidMount() {
         this.getTasks()
@@ -67,58 +69,83 @@ class ToDos extends Component {
                                 {this.state.month12.map(month12 => (
                                     <li className="collection-item">
                                         <div>{month12.task}
-                                            <a id="completed-btn" className="secondary-content" onClick={this.handleCompleted}><i className="material-icons">done</i></a>
+                                            <a href="#!" id="completed-btn" className="secondary-content" onClick={this.handleCompleted}><i className="material-icons">done</i></a>
                                         </div>
                                     </li>
                                 ))}
                             </List>
                         ) : (<h2 className="text-center">{this.state.message}</h2>)}
-
-
                     </ul>
+
                     <h4 className="subtitle center">9 Months Out</h4>
                     <ul className="collection">
-                        <li className="collection-item">
-                            <div>Shop for a wedding dress, shoes, and accessories
-                    <a href="#!" className="secondary-content"><i className="material-icons">done</i></a>
-                            </div>
-                        </li>
-
+                        {this.state.month9.length ? (
+                            <List>
+                                {this.state.month9.map(month9 => (
+                                    <li className="collection-item">
+                                        <div>{month9.task}
+                                            <a href="#!" id="completed-btn" className="secondary-content" onClick={this.handleCompleted}><i className="material-icons">done</i></a>
+                                        </div>
+                                    </li>
+                                ))}
+                            </List>
+                        ) : (<h2 className="text-center">{this.state.message}</h2>)}
                     </ul>
                     <h4 className="subtitle center">6 Months Out</h4>
                     <ul className="collection">
-                        <li className="collection-item">
-                            <div>Set up a registry
-                    <a href="#!" className="secondary-content"><i className="material-icons">done</i></a>
-                            </div>
-                        </li>
-
+                        {this.state.month9.length ? (
+                            <List>
+                                {this.state.month6.map(month6 => (
+                                    <li className="collection-item">
+                                        <div>{month6.task}
+                                            <a href="#!" id="completed-btn" className="secondary-content" onClick={this.handleCompleted}><i className="material-icons">done</i></a>
+                                        </div>
+                                    </li>
+                                ))}
+                            </List>
+                        ) : (<h2 className="text-center">{this.state.message}</h2>)}
                     </ul>
                     <h4 className="subtitle center">4 Months Out</h4>
                     <ul className="collection">
-                        <li className="collection-item">
-                            <div>Schedule hair and makeup trials and book stylists
-                    <a href="#!" className="secondary-content"><i className="material-icons">done</i></a>
-                            </div>
-                        </li>
-
+                        {this.state.month4.length ? (
+                            <List>
+                                {this.state.month4.map(month4 => (
+                                    <li className="collection-item">
+                                        <div>{month4.task}
+                                            <a href="#!" id="completed-btn" className="secondary-content" onClick={this.handleCompleted}><i className="material-icons">done</i></a>
+                                        </div>
+                                    </li>
+                                ))}
+                            </List>
+                        ) : (<h2 className="text-center">{this.state.message}</h2>)}
                     </ul>
                     <h4 className="subtitle center">2 Months Out</h4>
                     <ul className="collection">
-                        <li className="collection-item">
-                            <div>Obtain marriage license
-                    <a href="#!" className="secondary-content"><i className="material-icons">done</i></a>
-                            </div>
-                        </li>
-
+                        {this.state.month2.length ? (
+                            <List>
+                                {this.state.month2.map(month2 => (
+                                    <li className="collection-item">
+                                        <div>{month2.task}
+                                            <a href="#!" id="completed-btn" className="secondary-content" onClick={this.handleCompleted}><i className="material-icons">done</i></a>
+                                        </div>
+                                    </li>
+                                ))}
+                            </List>
+                        ) : (<h2 className="text-center">{this.state.message}</h2>)}
                     </ul>
                     <h4 className="subtitle center">Completed!</h4>
                     <ul className="collection">
+                    {this.state.completed.length ? (
+                            <List>
+                                {this.state.completed.map(completed => (
                         <li className="collection-item">
-                            <div>Completed 1
+                            <div>{completed.task}
                     <a href="#!" className="secondary-content"><i className="material-icons">done</i></a>
                             </div>
                         </li>
+                         ))}
+                         </List>
+                     ) : (<h2 className="text-center">No Completed Tasks</h2>)}
                     </ul>
                 </div>
             </div>
