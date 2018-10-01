@@ -7,7 +7,7 @@ const ToDos = () =>
         <Heading title="To Do List" subtitle="Marrymint helps you keep track of all the little details in one place. We belive that wedding planning should be fun, not stressful." />
         <div className="container">
         <h4 className="subtitle center">12 Months Out</h4>
-            <ul className="collection">
+            <ul className="collection to-do-list">
                 <li className="collection-item">
                     <div>Collect design inspiration
                     <a href="#!" className="secondary-content"><i className="material-icons">done</i></a>
@@ -45,7 +45,7 @@ const ToDos = () =>
                 </li>
             </ul>
         <h4 className="subtitle center">9 Months Out</h4>
-            <ul className="collection">
+            <ul className="collection to-do-list">
                 <li className="collection-item">
                     <div>Shop for a wedding dress, shoes, and accessories
                     <a href="#!" className="secondary-content"><i className="material-icons">done</i></a>
@@ -88,7 +88,7 @@ const ToDos = () =>
                 </li>
             </ul>
         <h4 className="subtitle center">6 Months Out</h4>
-            <ul className="collection">
+            <ul className="collection to-do-list">
                 <li className="collection-item">
                     <div>Set up a registry
                     <a href="#!" className="secondary-content"><i className="material-icons">done</i></a>
@@ -126,7 +126,7 @@ const ToDos = () =>
                 </li>
             </ul>
         <h4 className="subtitle center">4 Months Out</h4>
-            <ul className="collection">
+            <ul className="collection to-do-list">
                 <li className="collection-item">
                     <div>Schedule hair and makeup trials and book stylists
                     <a href="#!" className="secondary-content"><i className="material-icons">done</i></a>
@@ -154,7 +154,7 @@ const ToDos = () =>
                 </li>
             </ul>
         <h4 className="subtitle center">2 Months Out</h4>
-            <ul className="collection">
+            <ul className="collection to-do-list">
                 <li className="collection-item">
                     <div>Obtain marriage license
                     <a href="#!" className="secondary-content"><i className="material-icons">done</i></a>
@@ -192,22 +192,10 @@ const ToDos = () =>
                 </li>
             </ul>
         <h4 className="subtitle center">Completed!</h4>
-            <ul className="collection">
-                <li className="collection-item">
-                    <div>Completed 1
-                    <a href="#!" className="secondary-content"><i className="material-icons">done</i></a>
-                    </div>
-                </li>
-                <li className="collection-item">
-                    <div>Completed 2
-                    <a href="#!" className="secondary-content"><i className="material-icons">done</i></a>
-                    </div>
-                </li>
-                <li className="collection-item">
-                    <div>Completed 3
-                    <a href="#!" className="secondary-content"><i className="material-icons">done</i></a>
-                    </div>
-                </li>
+            <ul className="collection to-do-list">
+                <li className="collection-item">Completed task</li>
+                <li className="collection-item">Completed task</li>
+                <li className="collection-item">Completed task</li>
             </ul>
         </div>
     </div>
