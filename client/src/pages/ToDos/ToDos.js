@@ -7,7 +7,7 @@ const ToDos = () =>
         <Heading title="To Do List" subtitle="Marrymint helps you keep track of all the little details in one place. We belive that wedding planning should be fun, not stressful." />
         <div className="container">
         <h4 className="subtitle center">12 Months Out</h4>
-            <ul className="collection">
+            <ul className="collection to-do-collection">
                 <li className="collection-item">
                     <div>Collect design inspiration
                     <a href="#!" className="secondary-content"><i className="material-icons">done</i></a>

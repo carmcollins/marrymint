@@ -93,12 +93,12 @@ class Home extends Component {
                                     </div>
                                     <div className="row">
                                         <div className="input-field col s6">
-                                            <input id="wedding-date" type="text" className="datepicker validate" name="dateOfWedding" value={this.state.dateOfWedding}
+                                            <input id="wedding-date" type="text" placeholder="MM/DD/YYYY" className="validate" name="dateOfWedding" value={this.state.dateOfWedding}
                                                 onChange={this.handleInputChange} />
                                             <label htmlFor="wedding-date">Date of Wedding</label>
                                         </div>
                                         <div className="input-field col s6">
-                                            <input id="wedding-location" type="text" className="validate" name="location" value={this.state.location}
+                                            <input id="wedding-location" type="text" placeholder="City or Venue" className="validate" name="location" value={this.state.location}
                                                 onChange={this.handleInputChange} />
                                             <label htmlFor="wedding-location">Location of Wedding</label>
                                         </div>

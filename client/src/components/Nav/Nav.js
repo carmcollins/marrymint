@@ -4,7 +4,7 @@ import "./Nav.css";
 
 class Nav extends Component {
     state = {
-        isLoggedIn: false
+        isLoggedIn: true
     }
 
     render() {
@@ -21,8 +21,9 @@ class Nav extends Component {
                             <ul className="right hide-on-med-and-down">
                                 <li><Link to="/dashboard">Dashboard</Link></li>
                                 <li><Link to="/to-do-list">To Do List</Link></li>
-                                <li><Link to="/vendors">Vendors</Link></li>
                                 <li><Link to="/rsvp">RSVPs</Link></li>
+                                <li><Link to="/vendors">Vendors</Link></li>
+                                <li><Link to="/find-vendors">Find Vendors</Link></li>
                             </ul>
                             </div>
                         </nav>
@@ -30,8 +31,9 @@ class Nav extends Component {
                         <ul className="sidenav teal lighten-3" id="mobile-demo">
                             <li><Link to="/dashboard">Dashboard</Link></li>
                             <li><Link to="/to-do-list">To Do List</Link></li>
-                            <li><Link to="/vendors">Vendors</Link></li>
                             <li><Link to="/rsvp">RSVPs</Link></li>
+                            <li><Link to="/vendors">Vendors</Link></li>
+                            <li><Link to="/find-vendors">Find Vendors</Link></li>
                         </ul>
                     </div>
                     ) : (

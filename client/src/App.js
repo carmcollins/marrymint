@@ -10,7 +10,7 @@ import RSVPs from "./pages/RSVPs";
 
 class App extends Component {
   state = {
-    isLoggedIn: false
+    isLoggedIn: true
   }
 
   render() {
