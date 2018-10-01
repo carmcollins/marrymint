@@ -7,7 +7,14 @@ const bcrypt = require("bcrypt-nodejs");
 module.exports = {
   findById: function (req, res) {
     db.Users
-      .findById(req.body.id)
+      .findById(req.body._id)
+      .then(dbUser => res.json(dbUser))
+      .catch(err => res.status(422).json(err));
+  },
+
+  findAndUpdate: function (req, res) {
+    db.Users
+      .findById(req.body._id)
       .then(dbUser => res.json(dbUser))
       .catch(err => res.status(422).json(err));
   },
@@ -30,12 +37,12 @@ module.exports = {
             }
             else {
               console.log("successful login: " + isMatch);
-
+              userid = {_id: user._id};
               const token = jwt.sign({ _id: user._id }, process.env.SECRET_KEY);
 
               console.log("TOKEN: " + token);
 
-              return res.status(200).send({ success: true, token: token });
+              return res.status(200).send({ success: true, token: token, userid: userid });
             }
           });
         }

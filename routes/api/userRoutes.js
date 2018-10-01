@@ -16,5 +16,9 @@ router
   .route("/login")
   .post(usersController.findOne);
 
+  router
+  .route("/:id")
+  .put(usersController.findAndUpdate);
+
 
 module.exports = router;
