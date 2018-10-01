@@ -54,7 +54,7 @@ class Home extends Component {
                 password: this.state.password
             })
                 .then(function (res) {
-                    API.setJWT(res.data.token);
+                   console.log(res.data.userid._id)
                 });
         }
 

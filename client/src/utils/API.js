@@ -37,6 +37,10 @@ return Promise.resolve(response);
   saveUser: function(newUser) {
     return axios.post("/api/users", newUser);
   },
+   // Gets user from id and with task id
+   updateTask: function(id, taskId) {
+    return axios.put("/api/users/" + id, taskId);
+  },
 
 
 

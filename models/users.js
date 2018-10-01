@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const bcrypt = require("bcrypt-nodejs");
+const tasksSchema = require("mongoose").model("Tasks").schema
+const RSVPSchema = require("mongoose").model("RSVPS").schema
 
 const UsersSchema = new Schema({
   email: { type: String, required: true },
@@ -11,9 +13,8 @@ const UsersSchema = new Schema({
   dateOfWedding: { type: Date },
   vendors: {type: Schema.Types.ObjectId,
     ref: 'Vendors'},
-  tasks:{ type: Schema.Types.ObjectId,
-      ref: 'Tasks'
-  }
+   tasks:[tasksSchema],
+   RSVPS:[RSVPSchema]
 });
 
 UsersSchema.pre("save", function (next) {
