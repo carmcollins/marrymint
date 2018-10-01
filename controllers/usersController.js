@@ -55,9 +55,6 @@ module.exports = {
       email: req.body.email,
       password: req.body.password,
       brideName: req.body.bride,
-      groomName: req.body.groom,
-      location: req.body.location,
-      dateOfWedding: req.body.date,
       tasks: [
         {
           task: "Collect design inspiration",
