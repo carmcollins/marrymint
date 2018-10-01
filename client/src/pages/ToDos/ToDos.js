@@ -5,6 +5,7 @@ import "./ToDos.css";
 import API from "../../utils/API";
 
 
+
 class ToDos extends Component {
     state = {
         _id: "",
@@ -154,6 +155,8 @@ render() {
                     ) : (<h2 className="text-center">No Completed Tasks</h2>)}
                 </ul>
             </div>
+
+
         </div>
     )
 }

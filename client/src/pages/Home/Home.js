@@ -80,36 +80,21 @@ class Home extends Component {
                                 <div className="form-div">
                                     <h4 className="red-text text-accent-1">Eat, Drink, & Be Married</h4>
                                     <div className="row">
-                                        <div className="input-field col s6">
+                                        <div className="input-field col s12">
                                             <input id="brides-name" type="text" className="validate" name="brideName" value={this.state.brideName}
                                                 onChange={this.handleInputChange} />
-                                            <label htmlFor="brides-name">Bride's First Name</label>
-                                        </div>
-                                        <div className="input-field col s6">
-                                            <input id="grooms-name" type="text" className="validate" name="groomName" value={this.state.groomName}
-                                                onChange={this.handleInputChange} />
-                                            <label htmlFor="grooms-name">Groom's First Name</label>
+                                            <label htmlFor="brides-name">Name</label>
                                         </div>
                                     </div>
                                     <div className="row">
-                                        <div className="input-field col s6">
-                                            <input id="wedding-date" type="text" className="datepicker validate" name="dateOfWedding" value={this.state.dateOfWedding}
-                                                onChange={this.handleInputChange} />
-                                            <label htmlFor="wedding-date">Date of Wedding</label>
-                                        </div>
-                                        <div className="input-field col s6">
-                                            <input id="wedding-location" type="text" className="validate" name="location" value={this.state.location}
-                                                onChange={this.handleInputChange} />
-                                            <label htmlFor="wedding-location">Location of Wedding</label>
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="input-field col s6">
+                                        <div className="input-field col s12">
                                             <input id="signup-email" type="email" className="validate" name="email" value={this.state.email}
                                                 onChange={this.handleInputChange} />
                                             <label htmlFor="signup-email">Email</label>
                                         </div>
-                                        <div className="input-field col s6">
+                                    </div>
+                                    <div className="row">
+                                        <div className="input-field col s12">
                                             <input id="signup-password" type="password" className="validate" name="password" value={this.state.password}
                                                 onChange={this.handleInputChange} />
                                             <label htmlFor="signup-password">Password</label>
