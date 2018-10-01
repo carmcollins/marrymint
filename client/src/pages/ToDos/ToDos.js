@@ -22,7 +22,11 @@ class ToDos extends Component {
  
 
 componentDidMount() {
-    this.getTasks()
+    this.getTasks();
+    // API.todo()
+    // .then(response => {
+    //   console.log(response);
+    // });
 };
 
 //this will not work until we can pull the id for the login user
@@ -34,8 +38,8 @@ componentDidMount() {
 // };
 
 //this id needs to be the req.user._id
-getTasks = (id) => {
-    API.getUser(id)
+getTasks = () => {
+    (API.getid)
         .then(res => {
             for (let i = 0; i < res.tasks.length; i++) {
                 if (!res.tasks[i].completed && res.tasks[i].timeCategory === 12) {

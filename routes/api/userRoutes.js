@@ -18,7 +18,7 @@ router
 
   router
   .route("/:id")
-  .put(usersController.findAndUpdate);
+  // .put(usersController.findAndUpdate);
 
 
 module.exports = router;
