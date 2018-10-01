@@ -14,7 +14,9 @@ class RSVPs extends Component {
     };
 
     componentDidMount() {
-        this.getRSVPS()
+        //set id state to logged in user
+        this.setState({ id: req.user._id})
+        this.getRSVPS(this.state.id)
     };
 
     getRSVPS = (id) => {
@@ -56,7 +58,12 @@ class RSVPs extends Component {
         });
     };
 
-//handleAttend
+    handleAttend = event => {
+        event.preventDefault();
+        API.updateRSVPAttend()
+    }
+
+
 //handleNotAttend
 
 
@@ -92,37 +99,42 @@ class RSVPs extends Component {
             <div className="col s12 m12 l4">
                 <h4 className="subtitle center">Invited</h4>
                 <ul className="collection">
+                {this.state.invited.length ? (
+                        <List>
+                            {this.state.invited.map(invited => (
                     <li className="collection-item">
-                        <div>Carmen Collins
-                                <a href="" className="secondary-content rsvp-no"><i className="material-icons">clear</i></a>
-                            <a href="" className="secondary-content rsvp-yes"><i className="material-icons">done</i></a>
+                        <div>{invited.name}
+                                <a  href="" className="secondary-content rsvp-no" onClick={this.handleNoAttend}><i className="material-icons">clear</i></a>
+                            <a href="" className="secondary-content rsvp-yes"><i className="material-icons" onClick={this.handleAttend(invited._id)}>done</i></a>
                         </div>
                     </li>
-                    <li className="collection-item">
-                        <div>Jenni Bazelak
-                                <a href="" className="secondary-content rsvp-no"><i className="material-icons">clear</i></a>
-                            <a href="" className="secondary-content rsvp-yes"><i className="material-icons">done</i></a>
-                        </div>
-                    </li>
-                    <li className="collection-item">
-                        <div>Melissa Womack
-                                <a href="" className="secondary-content rsvp-no"><i className="material-icons">clear</i></a>
-                            <a href="" className="secondary-content rsvp-yes"><i className="material-icons">done</i></a>
-                        </div>
-                    </li>
+                    ))}
+                    </List>
+                ) : (<h2 className="text-center">{this.state.message}</h2>)}
                 </ul>
             </div>
             <div className="col s12 m6 l4">
                 <h4 className="subtitle center">Attending</h4>
                 <ul className="collection">
-                    <li className="collection-item">Carmen Collins</li>
-                    <li className="collection-item">Jenni Bazelak</li>
+                {this.state.attending.length ? (
+                        <List>
+                            {this.state.attending.map(attending => (
+                    <li className="collection-item">{attending.name}</li>
+                ))}
+                </List>
+            ) : (<h2 className="text-center">{this.state.message}</h2>)}
                 </ul>
             </div>
             <div className="col s12 m6 l4">
                 <h4 className="subtitle center">Not Attending</h4>
                 <ul className="collection">
-                    <li className="collection-item">Melissa Womack</li>
+                {this.state.notAttending.length ? (
+                        <List>
+                            {this.state.notAttending.map(notAttending => (
+                    <li className="collection-item">{notAttending.name}</li>
+                ))}
+                        </List>
+                    ) : (<h2 className="text-center">{this.state.message}</h2>)}
                 </ul>
             </div>
         </div>
