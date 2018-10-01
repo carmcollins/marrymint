@@ -12,12 +12,12 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
-  findAndUpdate: function (req, res) {
-    db.Users
-      .findById(req.body._id)
-      .then(dbUser => res.json(dbUser))
-      .catch(err => res.status(422).json(err));
-  },
+  // findAndUpdate: function (req, res) {
+  //   db.Users
+  //     .findById(req.body._id)
+  //     .then(dbUser => res.json(dbUser))
+  //     .catch(err => res.status(422).json(err));
+  // },
 
   findOne: function (req, res) {
     console.log("Email: " + req.body.email.email);
