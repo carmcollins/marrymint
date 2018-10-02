@@ -8,14 +8,16 @@ module.exports = {
   findById: function (req, res) {
     db.Users
       .findById(req.user._id)
-      .then(dbUser => res.json(dbUser))
+      .then(dbUser => {
+        console.log(dbUser);
+        res.json(dbUser);})
       .catch(err => res.status(422).json(err))
       console.log("load tasks with user" + res);
   },
 
   // findAndUpdate: function (req, res) {
   //   db.Users
-  //     .findById(req.body._id)
+  //     .findById(req.user._id)
   //     .then(dbUser => res.json(dbUser))
   //     .catch(err => res.status(422).json(err));
   // },

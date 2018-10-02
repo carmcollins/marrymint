@@ -46,24 +46,11 @@ export default {
       }
     )
   },
-  //get info
-  todo: function () {
-    return axios.get("/api/to-do-list",
-      {
-        headers: {
-          Authorization: `Bearer ${this.JWT}`
-        }
-      }
-    )
-  },
   // Add new user to the database
   saveUser: function (newUser) {
     return axios.post("/api/users", newUser);
   },
-  // Gets user from id and with task id
-  updateTask: function (id, taskId) {
-    return axios.put("/api/users/" + id, taskId);
-  },
+ 
 
 
 
@@ -110,12 +97,28 @@ export default {
 
   //TASKS
   getTasks: function () {
-    return axios.get("/api/tasks");
+    return axios.get("/api/tasks", {
+      headers: {
+        Authorization: `Bearer ${this.JWT}`
+      }
+    });
   },
   // Gets the task with the given id
   getTask: function (id) {
-    return axios.get("/api/tasks/" + id);
-  }
+    return axios.get("/api/tasks/" + id, {
+      headers: {
+        Authorization: `Bearer ${this.JWT}`
+      }
+    });
+  },
+   // Gets user from id and with task id
+   updateTask: function (taskId) {
+    return axios.put("/api/tasks/", { taskId:taskId }, {
+      headers: {
+        Authorization: `Bearer ${this.JWT}`
+      }
+    });
+  },
 
 
 };
