@@ -8,7 +8,7 @@ import API from "../../utils/API";
 
 class ToDos extends Component {
     state = {
-        user_id: "5bb24eb91a1da705dc6c549d",
+        user_id: "",
         task_id: "",
         month12: [],
         month9: [],
