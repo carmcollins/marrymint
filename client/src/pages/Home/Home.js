@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Home.css";
 import API from "../../utils/API";
-
+import { Redirect } from "react-router"
 
 class Home extends Component {
     state = {
@@ -10,7 +10,9 @@ class Home extends Component {
         brideName: "",
         groomName: "",
         location: "",
-        dateOfWedding: ""
+        dateOfWedding: "",
+        id:"",
+        redirect:false
     };
 
 
@@ -55,6 +57,13 @@ class Home extends Component {
             })
                 .then(function (res) {
                    console.log(res.data.userid._id)
+                   this.setState({
+                    id: res.data.userid._id
+                });
+                this.setState({
+                    redirect: true
+                });
+
                 });
         }
 
@@ -67,6 +76,12 @@ class Home extends Component {
 
 
     render() {
+        const { redirect } = this.state
+        if(redirect)
+        return (<Redirect to ={{
+            pathname: "./ToDos",
+            state: {referrer: this.state.todo}
+        }} />)
         return (
             <div className="bg-photo">
                 <div className="row">

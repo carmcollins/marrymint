@@ -8,7 +8,8 @@ import API from "../../utils/API";
 
 class ToDos extends Component {
     state = {
-        _id: "",
+        user_id: "5bb24eb91a1da705dc6c549d",
+        task_id: "",
         month12: [],
         month9: [],
         month6: [],
@@ -19,47 +20,57 @@ class ToDos extends Component {
 
     };
 
- 
+    
 
 componentDidMount() {
+    //this.setState({user_id: req.user._id});
     this.getTasks()
 };
 
-//this will not work until we can pull the id for the login user
-// handleCompleted = (req.user._id, _id) => {
-//     API.updateTask(req.user._id, _id)
-//     .then(res => {
-//         this.getTasks();
-//     }
+
+// handleCompleted = (this.state.user_id, id) => {
+//     //set state for task id to id from button
+//     API.updateTask(this.state.user_id, this.state.task_id)
+//     .then(() => this.getTasks())
 // };
 
 //this id needs to be the req.user._id
-getTasks = (id) => {
-    API.getUser(id)
+getTasks = () => {
+    API.getUser(this.state.user_id)
         .then(res => {
-            for (let i = 0; i < res.tasks.length; i++) {
-                if (!res.tasks[i].completed && res.tasks[i].timeCategory === 12) {
-                    this.setState({ month12: this.state.month12.push(res.tasks[i]) })
+            console.log("tasks are here:" + JSON.stringify(res))
+            console.log("just the tasks: " + JSON.stringify(res.data.tasks))
+            for (let i = 0; i < res.data.tasks.length; i++) {
+                if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "12") {
+                    let joined = this.state.month12.concat(res.data.tasks[i])
+                    this.setState({ month12: joined })
                 }
-                else if (!res.tasks[i].completed && res.tasks[i].timeCategory === 9) {
-                    this.setState({ month9: this.state.month9.push(res.tasks[i]) })
+                else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "9") {
+                    let joined = this.state.month9.concat(res.data.tasks[i])
+                    this.setState({ month9: joined })
                 }
-                else if (!res.tasks[i].completed && res.tasks[i].timeCategory === 6) {
-                    this.setState({ month6: this.state.month6.push(res.tasks[i]) })
+                else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "6") {
+                    let joined = this.state.month6.concat(res.data.tasks[i])
+                    this.setState({ month6: joined })
                 }
-                else if (!res.tasks[i].completed && res.tasks[i].timeCategory === 4) {
-                    this.setState({ month4: this.state.month4.push(res.tasks[i]) })
+                else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "4") {
+                    let joined = this.state.month4.concat(res.data.tasks[i])
+                    this.setState({ month4: joined })
                 }
-                else if (!res.tasks[i].completed && res.tasks[i].timeCategory === 2) {
-                    this.setState({ month6: this.state.month2.push(res.tasks[i]) })
+                else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "2") {
+                    let joined = this.state.month2.concat(res.data.tasks[i])
+                    this.setState({ month2: joined })
                 }
-                else if (res.tasks[i].completed) {
-                    this.setState({ completed: this.state.completed.push(res.tasks[i]) })
+                else if (res.data.tasks[i].completed) {
+                    let joined = this.state.completed.concat(res.data.tasks[i])
+                    this.setState({ completed: joined })
                 }
             }
         }
+        
         )
         .catch(err => console.log(err));
+        
 };
 
 
