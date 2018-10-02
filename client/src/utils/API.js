@@ -5,37 +5,46 @@ export default {
 
   //USER
   JWT: false,
-  setJWT: function(token){
+  setJWT: function (token) {
     this.JWT = token;
   },
-   getJWT: function(){
-     return this.JWT;
-   },
-   isLoggedIn: function(){
-     return this.JWT !== false;
-   },
-   logout: function(){
-     this.JWT = false;
-   },
-   hello: function(){
-     return axios.get("/dashboard", {headers:{Authorization: `Bearer ${this.JWT}`}});
-   },
+  getJWT: function () {
+    return this.JWT;
+  },
+  isLoggedIn: function () {
+    return this.JWT !== false;
+  },
+  logout: function () {
+    this.JWT = false;
+  },
+
   // Gets user from id
-  getUser: function(id) {
-    return axios.get("/api/users/" + id, {
+  getUser: function() {
+    return axios.get("/api/users/findById", {
       headers: {
         Authorization: `Bearer ${this.JWT}`
       }
     });
   },
+  
   // Login user
-  loginUser: function(email, password){
-   return axios.post("/api/users/login", {email, password}).then((response) => {
-if(response.data.token){
-  this.setJWT(response.data.token);
-}
-return Promise.resolve(response);
-   });
+  loginUser: function (email, password) {
+    return axios.post("/api/users/login", { email, password }).then((response) => {
+      if (response.data.token) {
+        this.setJWT(response.data.token);
+      }
+      return Promise.resolve(response);
+    });
+  },
+  //get info
+  todo: function () {
+    return axios.get("/api/to-do-list",
+      {
+        headers: {
+          Authorization: `Bearer ${this.JWT}`
+        }
+      }
+    )
   },
   //get info
   todo: function () {
@@ -48,11 +57,11 @@ return Promise.resolve(response);
     )
   },
   // Add new user to the database
-  saveUser: function(newUser) {
+  saveUser: function (newUser) {
     return axios.post("/api/users", newUser);
   },
-   // Gets user from id and with task id
-   updateTask: function(id, taskId) {
+  // Gets user from id and with task id
+  updateTask: function (id, taskId) {
     return axios.put("/api/users/" + id, taskId);
   },
 
@@ -61,48 +70,50 @@ return Promise.resolve(response);
 
   //RSVPS
   // Gets all rsvps for the logged in user
-  getRSVPS: function(id) {
+  getRSVPS: function (id) {
     return axios.get("/api/rsvps/" + id);
   },
   // Updates the RSVP with the given id to attend
-  updateRSVPAttend: function(updatedRSVP) {
+  updateRSVPAttend: function (updatedRSVP) {
     let id = updatedRSVP._id;
     let updatedRSVPNew = {
-         attending : true,
+      attending: true,
     };
     return axios.updateAttend("/api/rsvps/" + id, updatedRSVPNew);
   },
   // Updates the RSVP with the given id to not attend
-  updateRSVPNotAttend: function(updatedRSVP) {
+  updateRSVPNotAttend: function (updatedRSVP) {
     let id = updatedRSVP._id;
     let updatedRSVPNew = {
-        notAttending : true,
+      notAttending: true,
     };
     return axios.updateRSVPNotAttend("/api/rsvps/" + id, updatedRSVPNew);
   },
   // Saves an article to the database
+
   addRSVP: function(id, newRSVP) {
     return axios.post("/api/rsvps" + id, newRSVP);
+
   },
 
 
   //VENDORS
-  getVendors: function() {
+  getVendors: function () {
     return axios.get("/api/vendors");
   },
   // Gets the book with the given id
-  getVendor: function(id) {
+  getVendor: function (id) {
     return axios.get("/api/vendors/" + id);
   },
 
 
 
   //TASKS
-  getTasks: function() {
+  getTasks: function () {
     return axios.get("/api/tasks");
   },
   // Gets the task with the given id
-  getTask: function(id) {
+  getTask: function (id) {
     return axios.get("/api/tasks/" + id);
   }
 

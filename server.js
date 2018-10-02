@@ -8,7 +8,7 @@ const bcrypt = require("bcrypt-nodejs");
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
-
+const Users = require("./models/users");
 // Configure body parser for AJAX requests
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -36,6 +36,13 @@ passport.use(new JwtStrategy(
 
 // Add routes, both API and view
 app.use(routes);
+
+// app.get("/to-do-list", passport.authenticate("jwt", {session: false}), (req, res) => {
+//   res.json({
+//     email: req.user.email,
+//     timestamp: +Date.now()
+//   });
+// });
 
 // Set up promises with mongoose
 mongoose.Promise = global.Promise;
