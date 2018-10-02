@@ -5,16 +5,16 @@ const rsvpController = require("../../controllers/rsvpController");
 
 // Matches with "/api/rsvps/"
 router
-  .route("/:id")
+  .route("/")
   .get(rsvpController.findById);
 
   router
-  .route("/:id")
+  .route("/")
   .post(rsvpController.create);
 
-  router
-  .route("/:id")
-  .get(rsvpController.findById)
+  // router
+  // .route("/:id")
+  // .get(rsvpController.findById)
   // .put(rsvpController.updateAttend);
 
 

@@ -57,8 +57,12 @@ export default {
 
   //RSVPS
   // Gets all rsvps for the logged in user
-  getRSVPS: function (id) {
-    return axios.get("/api/rsvps/" + id);
+  getRSVPS: function () {
+    return axios.get("/api/rsvps/", {
+      headers: {
+        Authorization: `Bearer ${this.JWT}`
+      }
+    });
   },
   // Updates the RSVP with the given id to attend
   updateRSVPAttend: function (updatedRSVP) {
@@ -79,7 +83,11 @@ export default {
   // Saves an article to the database
 
   addRSVP: function(id, newRSVP) {
-    return axios.post("/api/rsvps" + id, newRSVP);
+    return axios.post("/api/rsvps",{
+      headers: {
+        Authorization: `Bearer ${this.JWT}`
+      }
+    }, { newRSVP:newRSVP });
 
   },
 

@@ -42,8 +42,7 @@ handleCompleted = (taskid) => {
 getTasks = () => {
     API.getUser()
         .then(res => {
-            console.log("tasks are here:" + JSON.stringify(res));
-            console.log("just the tasks: " + JSON.stringify(res.data.tasks));
+    
             const stateObj = {
                 month12: [],
                 month9: [],
