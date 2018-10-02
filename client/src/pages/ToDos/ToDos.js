@@ -86,7 +86,7 @@ render() {
                             {this.state.month12.map(month12 => (
                                 <li className="collection-item">
                                     <div>{month12.task}
-                                        <a href="#!" id={month12._id} className="secondary-content" onClick={this.handleCompleted}><i className="material-icons">done</i></a>
+                                        <a href="#!" data-id={month12._id} className="secondary-content" onClick={this.handleCompleted}><i className="material-icons">done</i></a>
                                     </div>
                                 </li>
                             ))}

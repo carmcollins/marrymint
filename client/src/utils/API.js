@@ -90,8 +90,10 @@ export default {
     return axios.updateRSVPNotAttend("/api/rsvps/" + id, updatedRSVPNew);
   },
   // Saves an article to the database
-  addRSVP: function (newRSVP) {
-    return axios.post("/api/rsvps", newRSVP);
+
+  addRSVP: function(id, newRSVP) {
+    return axios.post("/api/rsvps" + id, newRSVP);
+
   },
 
 

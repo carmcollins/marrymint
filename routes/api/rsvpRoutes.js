@@ -3,19 +3,14 @@ const rsvpController = require("../../controllers/rsvpController");
 
   
 
-// Matches with "/api/rsvp/"
+// Matches with "/api/rsvps/"
 router
   .route("/:id")
   .get(rsvpController.findById);
 
   router
-  .route("/")
-  .post(rsvpController.create);
-
-  router
   .route("/:id")
-  .get(rsvpController.findById)
-  // .put(rsvpController.updateNotAttend);
+  .post(rsvpController.create);
 
   router
   .route("/:id")
