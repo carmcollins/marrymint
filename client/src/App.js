@@ -13,8 +13,6 @@ class App extends Component {
     isLoggedIn: true
   }
 
-  
-
   render() {
     return (
       <Router>

@@ -12,7 +12,7 @@ export default {
     return this.JWT;
   },
   isLoggedIn: function () {
-    return this.JWT !== false;
+    return this.JWT != false;
   },
   logout: function () {
     this.JWT = false;

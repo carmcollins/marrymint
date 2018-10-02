@@ -40,12 +40,15 @@ class Home extends Component {
     };
 
     handleFormLogin = event => {
+
         event.preventDefault();
         if (this.state.email && this.state.password) {
             API.loginUser({
                 email: this.state.email,
                 password: this.state.password
-            })
+            }).then(() =>
+            this.setState({redirect: true})
+            )
         }
 
         //Clears form
@@ -60,8 +63,7 @@ class Home extends Component {
         const { redirect } = this.state
         if(redirect)
         return (<Redirect to ={{
-            pathname: "./ToDos",
-            state: {referrer: this.state.todo}
+            pathname: "./to-do-list"
         }} />)
         return (
             <div className="bg-photo">
