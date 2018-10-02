@@ -7,9 +7,10 @@ const bcrypt = require("bcrypt-nodejs");
 module.exports = {
   findById: function (req, res) {
     db.Users
-      .findById(req.body._id)
+      .findById(req.params.id)
       .then(dbUser => res.json(dbUser))
-      .catch(err => res.status(422).json(err));
+      .catch(err => res.status(422).json(err))
+      console.log("load tasks with user" + res);
   },
 
   // findAndUpdate: function (req, res) {

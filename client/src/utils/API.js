@@ -22,7 +22,11 @@ export default {
    },
   // Gets user from id
   getUser: function(id) {
-    return axios.get("/api/users/" + id);
+    return axios.get("/api/users/" + id, {
+      headers: {
+        Authorization: `Bearer ${this.JWT}`
+      }
+    });
   },
   // Login user
   loginUser: function(email, password){
@@ -32,6 +36,16 @@ if(response.data.token){
 }
 return Promise.resolve(response);
    });
+  },
+  //get info
+  todo: function () {
+    return axios.get("/api/to-do-list",
+      {
+        headers: {
+          Authorization: `Bearer ${this.JWT}`
+        }
+      }
+    )
   },
   // Add new user to the database
   saveUser: function(newUser) {

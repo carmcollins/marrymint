@@ -1,5 +1,6 @@
-import React from "react";
+import React, { Component }  from "react";
 import Heading from "../../components/Heading";
+import List from "../../components/List"
 import API from "../../utils/API";
 
 class RSVPs extends Component {
@@ -7,16 +8,16 @@ class RSVPs extends Component {
 
     state = {
         name: "",
-        id: "",
+        RSVP_id: "",
+        user_id: "5bb24eb91a1da705dc6c549d",
         invited: [],
         attending: [],
         notAttending: []
     };
 
     componentDidMount() {
-        //set id state to logged in user
-        this.setState({ id: req.user._id})
-        this.getRSVPS(this.state.id)
+        // this.setState({user_id: req.user._id});
+        this.getRSVPS(this.state.user_id)
     };
 
     getRSVPS = (id) => {
@@ -48,8 +49,7 @@ class RSVPs extends Component {
         if (this.state.name) {
             API.addRSVP({
                 name: this.state.name
-            })
-                .catch(err => console.log(err.response));
+            }).catch(err => console.log(err.response));
         }
 
         //Clears form
@@ -74,13 +74,13 @@ class RSVPs extends Component {
     <div className="container">
         <div className="row">
             <div className="col s12 m12 l12">
-                <div id="signup-form" className="row">
+                <div className="row">
                     <form className="col s12">
                         <div className="form-div">
                             <h4 className="red-text text-accent-1">Add Guests Here</h4>
                             <div className="row">
                                 <div className="input-field col s12">
-                                    <input id="guest-name" type="text" className="validate" name="guestName" value={this.state.name}
+                                    <input id="guest-name" type="text" className="validate" name="name" value={this.state.name}
                                         onChange={this.handleInputChange} />
                                     <label htmlFor="guest-name">Name</label>
                                 </div>
