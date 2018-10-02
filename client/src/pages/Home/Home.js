@@ -8,9 +8,6 @@ class Home extends Component {
         email: "",
         password: "",
         brideName: "",
-        groomName: "",
-        location: "",
-        dateOfWedding: "",
         id:"",
         redirect:false
     };
@@ -25,12 +22,9 @@ class Home extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        if (this.state.email && this.state.password && this.state.brideName && this.state.groomName && this.state.location && this.state.dateOfWedding) {
+        if (this.state.email && this.state.password && this.state.brideName) {
             API.saveUser({
                 bride: this.state.brideName,
-                groom: this.state.groomName,
-                location: this.state.location,
-                date: this.state.dateOfWedding,
                 email: this.state.email,
                 password: this.state.password
             })
@@ -41,10 +35,7 @@ class Home extends Component {
         this.setState({
             email: "",
             password: "",
-            brideName: "",
-            groomName: "",
-            location: "",
-            dateOfWedding: ""
+            brideName: ""
         });
     };
 
@@ -55,16 +46,6 @@ class Home extends Component {
                 email: this.state.email,
                 password: this.state.password
             })
-                .then(function (res) {
-                   console.log(res.data.userid._id)
-                   this.setState({
-                    id: res.data.userid._id
-                });
-                this.setState({
-                    redirect: true
-                });
-
-                });
         }
 
         //Clears form

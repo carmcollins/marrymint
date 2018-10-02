@@ -36,7 +36,7 @@ componentDidMount() {
 
 //this id needs to be the req.user._id
 getTasks = () => {
-    API.getUser(this.state.user_id)
+    API.getUser()
         .then(res => {
             console.log("tasks are here:" + JSON.stringify(res))
             console.log("just the tasks: " + JSON.stringify(res.data.tasks))
