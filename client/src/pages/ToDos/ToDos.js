@@ -8,8 +8,9 @@ import API from "../../utils/API";
 
 class ToDos extends Component {
     state = {
+
         user_id: "",
-        task_id: "",
+        task_id: "", 
         month12: [],
         month9: [],
         month6: [],
@@ -28,11 +29,10 @@ componentDidMount() {
 };
 
 
-// handleCompleted = (this.state.user_id, id) => {
-//     //set state for task id to id from button
-//     API.updateTask(this.state.user_id, this.state.task_id)
-//     .then(() => this.getTasks())
-// };
+handleCompleted = (taskid) => {
+    API.updateTask(this.state.user_id, taskid)
+    .then(() => this.getTasks())
+};
 
 //this id needs to be the req.user._id
 getTasks = () => {
@@ -86,7 +86,7 @@ render() {
                             {this.state.month12.map(month12 => (
                                 <li className="collection-item">
                                     <div>{month12.task}
-                                        <a href="#!" data-id={month12._id} className="secondary-content" onClick={this.handleCompleted}><i className="material-icons">done</i></a>
+                                        <a href="#!" className="secondary-content" onClick={() => this.handleCompleted(month12._id)}><i className="material-icons">done</i></a>
                                     </div>
                                 </li>
                             ))}
