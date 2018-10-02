@@ -4,7 +4,7 @@ const db = require("../models");
 module.exports = {
   findAll: function(req, res) {
     db.Tasks
-      .find(req.query)
+      .find({_id: req.user._id})
       .then(dbTasks => res.json(dbTasks))
       .catch(err => res.status(422).json(err));
   },

@@ -36,7 +36,7 @@ componentDidMount() {
 
 //this id needs to be the req.user._id
 getTasks = () => {
-    API.getUser(this.state.user_id)
+    API.getUser()
         .then(res => {
             console.log("tasks are here:" + JSON.stringify(res))
             console.log("just the tasks: " + JSON.stringify(res.data.tasks))
@@ -80,8 +80,7 @@ render() {
             <Heading title="To Do List" subtitle="Marrymint helps you keep track of all the little details in one place. We belive that wedding planning should be fun, not stressful." />
             <div className="container">
                 <h4 className="subtitle center">12 Months Out</h4>
-                <ul
-                    className="collection">
+                <ul className="collection to-do-list">
                     {this.state.month12.length ? (
                         <List>
                             {this.state.month12.map(month12 => (
@@ -92,11 +91,11 @@ render() {
                                 </li>
                             ))}
                         </List>
-                    ) : (<h2 className="text-center">{this.state.message}</h2>)}
+                    ) : (<p className="collection-item center">{this.state.message}</p>)}
                 </ul>
 
                 <h4 className="subtitle center">9 Months Out</h4>
-                <ul className="collection">
+                <ul className="collection to-do-list">
                     {this.state.month9.length ? (
                         <List>
                             {this.state.month9.map(month9 => (
@@ -107,10 +106,11 @@ render() {
                                 </li>
                             ))}
                         </List>
-                    ) : (<h2 className="text-center">{this.state.message}</h2>)}
+                    ) : (<p className="collection-item center">{this.state.message}</p>)}
                 </ul>
+
                 <h4 className="subtitle center">6 Months Out</h4>
-                <ul className="collection">
+                <ul className="collection to-do-list">
                     {this.state.month9.length ? (
                         <List>
                             {this.state.month6.map(month6 => (
@@ -121,10 +121,11 @@ render() {
                                 </li>
                             ))}
                         </List>
-                    ) : (<h2 className="text-center">{this.state.message}</h2>)}
+                    ) : (<p className="collection-item center">{this.state.message}</p>)}
                 </ul>
+
                 <h4 className="subtitle center">4 Months Out</h4>
-                <ul className="collection">
+                <ul className="collection to-do-list">
                     {this.state.month4.length ? (
                         <List>
                             {this.state.month4.map(month4 => (
@@ -135,10 +136,11 @@ render() {
                                 </li>
                             ))}
                         </List>
-                    ) : (<h2 className="text-center">{this.state.message}</h2>)}
+                    ) : (<p className="collection-item center">{this.state.message}</p>)}
                 </ul>
+
                 <h4 className="subtitle center">2 Months Out</h4>
-                <ul className="collection">
+                <ul className="collection to-do-list">
                     {this.state.month2.length ? (
                         <List>
                             {this.state.month2.map(month2 => (
@@ -149,10 +151,11 @@ render() {
                                 </li>
                             ))}
                         </List>
-                    ) : (<h2 className="text-center">{this.state.message}</h2>)}
+                    ) : (<p className="collection-item center">{this.state.message}</p>)}
                 </ul>
+
                 <h4 className="subtitle center">Completed!</h4>
-                <ul className="collection">
+                <ul className="collection to-do-list">
                     {this.state.completed.length ? (
                         <List>
                             {this.state.completed.map(completed => (
@@ -163,7 +166,7 @@ render() {
                                 </li>
                             ))}
                         </List>
-                    ) : (<h2 className="text-center">No Completed Tasks</h2>)}
+                    ) : (<p className="collection-item center">{this.state.message}</p>)}
                 </ul>
             </div>
 
