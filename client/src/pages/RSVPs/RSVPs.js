@@ -17,21 +17,24 @@ class RSVPs extends Component {
 
     componentDidMount() {
         // this.setState({user_id: req.user._id});
-        this.getRSVPS(this.state.user_id)
+        this.getRSVPS()
     };
 
-    getRSVPS = (id) => {
-        API.getRSVPS(id)
+    getRSVPS = () => {
+        API.getRSVPS(this.state.user_id)
             .then(res => {
-                for (let i = 0; i < res.RSVPS.length; i++) {
-                    if (res.RSVPS[i].invited && !res.RSVPS[i].attending && !res.RSVPS[i].notAttending) {
-                        this.setState({ invited: this.state.invited.push(res.RSVPS[i]) })
+                for (let i = 0; i < res.data.RSVPS.length; i++) {
+                    if (res.data.RSVPS[i].invited && !res.data.RSVPS[i].attending && !res.data.RSVPS[i].notAttending) {
+                        let joined = this.state.invited.concat(res.data.RSVPS[i])
+                        this.setState({ invited: joined })
                     } 
-                    else if (res.RSVPS[i].invited && res.RSVPS[i].attending && !res.RSVPS[i].notAttending) {
-                        this.setState({ attending: this.state.attending.push(res.RSVPS[i]) })
+                    else if (res.data.RSVPS[i].invited && res.data.RSVPS[i].attending && !res.data.RSVPS[i].notAttending) {
+                        let joined = this.state.attending.concat(res.data.RSVPS[i])
+                        this.setState({ attending: joined })
                     }
-                    else if (res.RSVPS[i].invited && !res.RSVPS[i].attending && res.RSVPS[i].notAttending) {
-                        this.setState({ notAttending: this.state.notAttending.push(res.RSVPS[i]) })
+                    else if (res.data.RSVPS[i].invited && !res.data.RSVPS[i].attending && res.data.RSVPS[i].notAttending) {
+                        let joined = this.state.notAttending.concat(res.data.RSVPS[i])
+                        this.setState({ notAttending: joined })
                     }
 
      } }) .catch(err => console.log(err));
@@ -47,9 +50,8 @@ class RSVPs extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.name) {
-            API.addRSVP({
-                name: this.state.name
-            }).catch(err => console.log(err.response));
+            API.addRSVP(this.state.user_id, this.state.name
+            ).catch(err => console.log(err.response));
         }
 
         //Clears form
