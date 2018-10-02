@@ -8,7 +8,8 @@ import API from "../../utils/API";
 
 class ToDos extends Component {
     state = {
-        _id: "",
+        user_id: "5bb24eb91a1da705dc6c549d",
+        task_id: "",
         month12: [],
         month9: [],
         month6: [],
@@ -19,51 +20,57 @@ class ToDos extends Component {
 
     };
 
- 
+    
 
 componentDidMount() {
-    this.getTasks();
-    // API.todo()
-    // .then(response => {
-    //   console.log(response);
-    // });
+    //this.setState({user_id: req.user._id});
+    this.getTasks()
 };
 
-//this will not work until we can pull the id for the login user
-// handleCompleted = (req.user._id, _id) => {
-//     API.updateTask(req.user._id, _id)
-//     .then(res => {
-//         this.getTasks();
-//     }
+
+// handleCompleted = (this.state.user_id, id) => {
+//     //set state for task id to id from button
+//     API.updateTask(this.state.user_id, this.state.task_id)
+//     .then(() => this.getTasks())
 // };
 
 //this id needs to be the req.user._id
 getTasks = () => {
-    (API.getid)
+    API.getUser()
         .then(res => {
-            for (let i = 0; i < res.tasks.length; i++) {
-                if (!res.tasks[i].completed && res.tasks[i].timeCategory === 12) {
-                    this.setState({ month12: this.state.month12.push(res.tasks[i]) })
+            console.log("tasks are here:" + JSON.stringify(res))
+            console.log("just the tasks: " + JSON.stringify(res.data.tasks))
+            for (let i = 0; i < res.data.tasks.length; i++) {
+                if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "12") {
+                    let joined = this.state.month12.concat(res.data.tasks[i])
+                    this.setState({ month12: joined })
                 }
-                else if (!res.tasks[i].completed && res.tasks[i].timeCategory === 9) {
-                    this.setState({ month9: this.state.month9.push(res.tasks[i]) })
+                else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "9") {
+                    let joined = this.state.month9.concat(res.data.tasks[i])
+                    this.setState({ month9: joined })
                 }
-                else if (!res.tasks[i].completed && res.tasks[i].timeCategory === 6) {
-                    this.setState({ month6: this.state.month6.push(res.tasks[i]) })
+                else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "6") {
+                    let joined = this.state.month6.concat(res.data.tasks[i])
+                    this.setState({ month6: joined })
                 }
-                else if (!res.tasks[i].completed && res.tasks[i].timeCategory === 4) {
-                    this.setState({ month4: this.state.month4.push(res.tasks[i]) })
+                else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "4") {
+                    let joined = this.state.month4.concat(res.data.tasks[i])
+                    this.setState({ month4: joined })
                 }
-                else if (!res.tasks[i].completed && res.tasks[i].timeCategory === 2) {
-                    this.setState({ month6: this.state.month2.push(res.tasks[i]) })
+                else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "2") {
+                    let joined = this.state.month2.concat(res.data.tasks[i])
+                    this.setState({ month2: joined })
                 }
-                else if (res.tasks[i].completed) {
-                    this.setState({ completed: this.state.completed.push(res.tasks[i]) })
+                else if (res.data.tasks[i].completed) {
+                    let joined = this.state.completed.concat(res.data.tasks[i])
+                    this.setState({ completed: joined })
                 }
             }
         }
+        
         )
         .catch(err => console.log(err));
+        
 };
 
 
@@ -73,8 +80,7 @@ render() {
             <Heading title="To Do List" subtitle="Marrymint helps you keep track of all the little details in one place. We belive that wedding planning should be fun, not stressful." />
             <div className="container">
                 <h4 className="subtitle center">12 Months Out</h4>
-                <ul
-                    className="collection">
+                <ul className="collection to-do-list">
                     {this.state.month12.length ? (
                         <List>
                             {this.state.month12.map(month12 => (
@@ -85,11 +91,11 @@ render() {
                                 </li>
                             ))}
                         </List>
-                    ) : (<h2 className="text-center">{this.state.message}</h2>)}
+                    ) : (<p className="collection-item center">{this.state.message}</p>)}
                 </ul>
 
                 <h4 className="subtitle center">9 Months Out</h4>
-                <ul className="collection">
+                <ul className="collection to-do-list">
                     {this.state.month9.length ? (
                         <List>
                             {this.state.month9.map(month9 => (
@@ -100,10 +106,11 @@ render() {
                                 </li>
                             ))}
                         </List>
-                    ) : (<h2 className="text-center">{this.state.message}</h2>)}
+                    ) : (<p className="collection-item center">{this.state.message}</p>)}
                 </ul>
+
                 <h4 className="subtitle center">6 Months Out</h4>
-                <ul className="collection">
+                <ul className="collection to-do-list">
                     {this.state.month9.length ? (
                         <List>
                             {this.state.month6.map(month6 => (
@@ -114,10 +121,11 @@ render() {
                                 </li>
                             ))}
                         </List>
-                    ) : (<h2 className="text-center">{this.state.message}</h2>)}
+                    ) : (<p className="collection-item center">{this.state.message}</p>)}
                 </ul>
+
                 <h4 className="subtitle center">4 Months Out</h4>
-                <ul className="collection">
+                <ul className="collection to-do-list">
                     {this.state.month4.length ? (
                         <List>
                             {this.state.month4.map(month4 => (
@@ -128,10 +136,11 @@ render() {
                                 </li>
                             ))}
                         </List>
-                    ) : (<h2 className="text-center">{this.state.message}</h2>)}
+                    ) : (<p className="collection-item center">{this.state.message}</p>)}
                 </ul>
+
                 <h4 className="subtitle center">2 Months Out</h4>
-                <ul className="collection">
+                <ul className="collection to-do-list">
                     {this.state.month2.length ? (
                         <List>
                             {this.state.month2.map(month2 => (
@@ -142,10 +151,11 @@ render() {
                                 </li>
                             ))}
                         </List>
-                    ) : (<h2 className="text-center">{this.state.message}</h2>)}
+                    ) : (<p className="collection-item center">{this.state.message}</p>)}
                 </ul>
+
                 <h4 className="subtitle center">Completed!</h4>
-                <ul className="collection">
+                <ul className="collection to-do-list">
                     {this.state.completed.length ? (
                         <List>
                             {this.state.completed.map(completed => (
@@ -156,7 +166,7 @@ render() {
                                 </li>
                             ))}
                         </List>
-                    ) : (<h2 className="text-center">No Completed Tasks</h2>)}
+                    ) : (<p className="collection-item center">{this.state.message}</p>)}
                 </ul>
             </div>
 

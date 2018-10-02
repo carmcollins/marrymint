@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import "./Home.css";
 import API from "../../utils/API";
-
+import { Redirect } from "react-router"
 
 class Home extends Component {
     state = {
         email: "",
         password: "",
         brideName: "",
-        groomName: "",
-        location: "",
-        dateOfWedding: ""
+        id:"",
+        redirect:false
     };
 
 
@@ -23,12 +22,9 @@ class Home extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        if (this.state.email && this.state.password && this.state.brideName && this.state.groomName && this.state.location && this.state.dateOfWedding) {
+        if (this.state.email && this.state.password && this.state.brideName) {
             API.saveUser({
                 bride: this.state.brideName,
-                groom: this.state.groomName,
-                location: this.state.location,
-                date: this.state.dateOfWedding,
                 email: this.state.email,
                 password: this.state.password
             })
@@ -39,10 +35,7 @@ class Home extends Component {
         this.setState({
             email: "",
             password: "",
-            brideName: "",
-            groomName: "",
-            location: "",
-            dateOfWedding: ""
+            brideName: ""
         });
     };
 
@@ -53,9 +46,6 @@ class Home extends Component {
                 email: this.state.email,
                 password: this.state.password
             })
-                .then(function (res) {
-                   console.log(res.data.userid._id)
-                });
         }
 
         //Clears form
@@ -67,6 +57,12 @@ class Home extends Component {
 
 
     render() {
+        const { redirect } = this.state
+        if(redirect)
+        return (<Redirect to ={{
+            pathname: "./ToDos",
+            state: {referrer: this.state.todo}
+        }} />)
         return (
             <div className="bg-photo">
                 <div className="row">

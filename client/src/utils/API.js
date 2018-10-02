@@ -19,9 +19,14 @@ export default {
   },
 
   // Gets user from id
-  getUser: function (id) {
-    return axios.get("/api/users/" + id);
+  getUser: function() {
+    return axios.get("/api/users/findById", {
+      headers: {
+        Authorization: `Bearer ${this.JWT}`
+      }
+    });
   },
+  
   // Login user
   loginUser: function (email, password) {
     return axios.post("/api/users/login", { email, password }).then((response) => {
@@ -30,6 +35,16 @@ export default {
       }
       return Promise.resolve(response);
     });
+  },
+  //get info
+  todo: function () {
+    return axios.get("/api/to-do-list",
+      {
+        headers: {
+          Authorization: `Bearer ${this.JWT}`
+        }
+      }
+    )
   },
   //get info
   todo: function () {
