@@ -1,6 +1,6 @@
 module.exports = {
     RSVPS: require("./RSVPS"),
-    tasks: require("./tasks"),
+    Tasks: require("./tasks"),
     Users: require("./users"),
     vendors: require("./vendors")
 };

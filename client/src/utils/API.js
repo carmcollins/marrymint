@@ -46,32 +46,23 @@ export default {
       }
     )
   },
-  //get info
-  todo: function () {
-    return axios.get("/api/to-do-list",
-      {
-        headers: {
-          Authorization: `Bearer ${this.JWT}`
-        }
-      }
-    )
-  },
   // Add new user to the database
   saveUser: function (newUser) {
     return axios.post("/api/users", newUser);
   },
-  // Gets user from id and with task id
-  updateTask: function (id, taskId) {
-    return axios.put("/api/users/" + id, taskId);
-  },
+ 
 
 
 
 
   //RSVPS
   // Gets all rsvps for the logged in user
-  getRSVPS: function (id) {
-    return axios.get("/api/rsvps/" + id);
+  getRSVPS: function () {
+    return axios.get("/api/rsvps/", {
+      headers: {
+        Authorization: `Bearer ${this.JWT}`
+      }
+    });
   },
   // Updates the RSVP with the given id to attend
   updateRSVPAttend: function (updatedRSVP) {
@@ -92,7 +83,11 @@ export default {
   // Saves an article to the database
 
   addRSVP: function(id, newRSVP) {
-    return axios.post("/api/rsvps" + id, newRSVP);
+    return axios.post("/api/rsvps",{
+      headers: {
+        Authorization: `Bearer ${this.JWT}`
+      }
+    }, { newRSVP:newRSVP });
 
   },
 
@@ -110,12 +105,28 @@ export default {
 
   //TASKS
   getTasks: function () {
-    return axios.get("/api/tasks");
+    return axios.get("/api/tasks", {
+      headers: {
+        Authorization: `Bearer ${this.JWT}`
+      }
+    });
   },
   // Gets the task with the given id
   getTask: function (id) {
-    return axios.get("/api/tasks/" + id);
-  }
+    return axios.get("/api/tasks/" + id, {
+      headers: {
+        Authorization: `Bearer ${this.JWT}`
+      }
+    });
+  },
+   // Gets user from id and with task id
+   updateTask: function (taskId) {
+    return axios.put("/api/tasks/", { taskId:taskId }, {
+      headers: {
+        Authorization: `Bearer ${this.JWT}`
+      }
+    });
+  },
 
 
 };

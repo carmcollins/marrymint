@@ -30,42 +30,50 @@ componentDidMount() {
 
 
 handleCompleted = (taskid) => {
-    API.updateTask(this.state.user_id, taskid)
-    .then(() => this.getTasks())
+    console.log(taskid);
+  
+    API.updateTask(taskid)
+    .then(() => {
+        this.getTasks();
+    });
 };
 
 //this id needs to be the req.user._id
 getTasks = () => {
     API.getUser()
         .then(res => {
-            console.log("tasks are here:" + JSON.stringify(res))
-            console.log("just the tasks: " + JSON.stringify(res.data.tasks))
+    
+            const stateObj = {
+                month12: [],
+                month9: [],
+                month6: [],
+                month4: [],
+                month2: [],
+                completed: []
+            };
+
             for (let i = 0; i < res.data.tasks.length; i++) {
                 if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "12") {
-                    let joined = this.state.month12.concat(res.data.tasks[i])
-                    this.setState({ month12: joined })
+                    stateObj.month12.push(res.data.tasks[i])
                 }
                 else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "9") {
-                    let joined = this.state.month9.concat(res.data.tasks[i])
-                    this.setState({ month9: joined })
+                    stateObj.month9.push(res.data.tasks[i])
                 }
                 else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "6") {
-                    let joined = this.state.month6.concat(res.data.tasks[i])
-                    this.setState({ month6: joined })
+                    stateObj.month6.push(res.data.tasks[i])
                 }
                 else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "4") {
-                    let joined = this.state.month4.concat(res.data.tasks[i])
-                    this.setState({ month4: joined })
+                    stateObj.month4.push(res.data.tasks[i])
                 }
                 else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "2") {
-                    let joined = this.state.month2.concat(res.data.tasks[i])
-                    this.setState({ month2: joined })
+                    stateObj.month2.push(res.data.tasks[i])
                 }
                 else if (res.data.tasks[i].completed) {
-                    let joined = this.state.completed.concat(res.data.tasks[i])
-                    this.setState({ completed: joined })
+                    stateObj.completed.push(res.data.tasks[i])
                 }
             }
+
+            this.setState(stateObj);
         }
         
         )
@@ -84,7 +92,7 @@ render() {
                     {this.state.month12.length ? (
                         <List>
                             {this.state.month12.map(month12 => (
-                                <li className="collection-item">
+                                <li className="collection-item" key={month12._id}>
                                     <div>{month12.task}
                                         <a href="#!" className="secondary-content" onClick={() => this.handleCompleted(month12._id)}><i className="material-icons">done</i></a>
                                     </div>
@@ -99,9 +107,9 @@ render() {
                     {this.state.month9.length ? (
                         <List>
                             {this.state.month9.map(month9 => (
-                                <li className="collection-item">
+                                <li className="collection-item" key={month9._id}>
                                     <div>{month9.task}
-                                        <a href="#!" id={month9._id} className="secondary-content" onClick={this.handleCompleted}><i className="material-icons">done</i></a>
+                                        <a href="#!" id={month9._id} className="secondary-content" onClick={() => this.handleCompleted(month9._id)}><i className="material-icons">done</i></a>
                                     </div>
                                 </li>
                             ))}
@@ -114,9 +122,9 @@ render() {
                     {this.state.month9.length ? (
                         <List>
                             {this.state.month6.map(month6 => (
-                                <li className="collection-item">
+                                <li className="collection-item" key={month6._id}>
                                     <div>{month6.task}
-                                        <a href="#!" id={month6._id} className="secondary-content" onClick={this.handleCompleted}><i className="material-icons">done</i></a>
+                                        <a href="#!" id={month6._id} className="secondary-content" onClick={() => this.handleCompleted(month6._id)}><i className="material-icons">done</i></a>
                                     </div>
                                 </li>
                             ))}
@@ -129,9 +137,9 @@ render() {
                     {this.state.month4.length ? (
                         <List>
                             {this.state.month4.map(month4 => (
-                                <li className="collection-item">
+                                <li className="collection-item" key={month4._id}>
                                     <div>{month4.task}
-                                        <a href="#!" id={month4._id}className="secondary-content" onClick={this.handleCompleted}><i className="material-icons">done</i></a>
+                                        <a href="#!" id={month4._id}className="secondary-content" onClick={() => this.handleCompleted(month4._id)}><i className="material-icons">done</i></a>
                                     </div>
                                 </li>
                             ))}
@@ -144,9 +152,9 @@ render() {
                     {this.state.month2.length ? (
                         <List>
                             {this.state.month2.map(month2 => (
-                                <li className="collection-item">
+                                <li className="collection-item" key={month2._id}>
                                     <div>{month2.task}
-                                        <a href="#!" id={month2._id} className="secondary-content" onClick={this.handleCompleted}><i className="material-icons">done</i></a>
+                                        <a href="#!" id={month2._id} className="secondary-content" onClick={() => this.handleCompleted(month2._id)}><i className="material-icons">done</i></a>
                                     </div>
                                 </li>
                             ))}
@@ -159,7 +167,7 @@ render() {
                     {this.state.completed.length ? (
                         <List>
                             {this.state.completed.map(completed => (
-                                <li className="collection-item">
+                                <li className="collection-item" key={completed._id}>
                                     <div>{completed.task}
                                         <a href="#!" className="secondary-content"><i className="material-icons">done</i></a>
                                     </div>

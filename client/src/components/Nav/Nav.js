@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import "./Nav.css";
 import API from "../../utils/API";
 
+
 import { Redirect } from "react-router"
+
 
 
 class Nav extends Component {
