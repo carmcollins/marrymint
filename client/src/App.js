@@ -6,6 +6,7 @@ import ToDos from "./pages/ToDos";
 import FindVendors from "./pages/FindVendors";
 import Vendors from "./pages/Vendors";
 import RSVPs from "./pages/RSVPs";
+import NotFound from "./pages/NotFound";
 
 class App extends Component {
   state = {
@@ -29,7 +30,8 @@ class App extends Component {
                 <Route exact path="/to-do-list" component={ToDos} />,
                 <Route exact path="/find-vendors" component={FindVendors} />,
                 <Route exact path="/vendors" component={Vendors} />,
-                <Route exact path="/rsvp" component={RSVPs} />]
+                <Route exact path="/rsvp" component={RSVPs} />,
+                <Route exact path="/not-found" component={NotFound} />]
               )
             }
         </div>
