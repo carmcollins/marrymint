@@ -72,7 +72,7 @@ class RSVPs extends Component {
     render() {
         return (   
     <div>
-    <Heading title="RSVPs" subtitle="Input all of your wedding guests' names into our database, and easily track their attendance as your invite responses come in." />
+    <Heading bg="rsvpHead" title="RSVPs" subtitle="Input all of your wedding guests' names into our database, and easily track their attendance as your invite responses come in." />
     <div className="container">
         <div className="row">
             <div className="col s12 m12 l12">
