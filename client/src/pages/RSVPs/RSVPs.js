@@ -77,12 +77,17 @@ class RSVPs extends Component {
 
 
     render() {
-        return (
-            <div>
-                <Heading title="RSVPs" subtitle="Input all of your wedding guests' names into our database, and easily track their attendance as your invite responses come in." />
-                <div className="container">
-                    <div className="row">
-                        <div className="col s12 m12 l12">
+
+        return (   
+    <div>
+    <Heading bg="rsvpHead" title="RSVPs" subtitle="Input all of your wedding guests' names into our database, and easily track their attendance as your invite responses come in." />
+    <div className="container">
+        <div className="row">
+            <div className="col s12 m12 l12">
+                <div className="row">
+                    <form className="col s12">
+                        <div className="form-div">
+                            <h4 className="red-text text-accent-1">Add Guests Here</h4>
                             <div className="row">
                                 <form className="col s12">
                                     <div className="form-div">

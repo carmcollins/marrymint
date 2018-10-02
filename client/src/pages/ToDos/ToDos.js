@@ -85,7 +85,7 @@ getTasks = () => {
 render() {
     return (
         <div>
-            <Heading title="To Do List" subtitle="Marrymint helps you keep track of all the little details in one place. We belive that wedding planning should be fun, not stressful." />
+            <Heading bg="toDoHead" title="To Do List" subtitle="Marrymint helps you keep track of all the little details in one place. We belive that wedding planning should be fun, not stressful." />
             <div className="container">
                 <h4 className="subtitle center">12 Months Out</h4>
                 <ul className="collection to-do-list">

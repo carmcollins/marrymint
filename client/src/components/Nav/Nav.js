@@ -3,17 +3,30 @@ import { Link } from "react-router-dom";
 import "./Nav.css";
 import API from "../../utils/API";
 
+
+import { Redirect } from "react-router"
+
+
+
 class Nav extends Component {
     state = {
-        isLoggedIn: true
+        isLoggedIn: true,
+        redirect: false
     }
 
     handleFormLogOut = event => {
         event.preventDefault();
         API.logout();
+        this.setState({redirect: true});
+        
     };
 
     render() {
+        const { redirect } = this.state
+        if(redirect)
+        return (<Redirect to ={{
+            pathname: "/"
+        }} />)
         return (
             <div>
                 {
