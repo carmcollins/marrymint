@@ -3,7 +3,7 @@
     margin: 0px;
 }
 
-.bg-photo {
+.home-bg {
     background-image: url("table-muted.jpg");
     height: 100vh;
     background-position: center center;
@@ -12,7 +12,7 @@
     background-size: cover;
 }
 
-.intro {
+.home-title {
     font-family: "Josefin Sans", sans-serif;
     color: white;
     font-size: 3em;
@@ -21,19 +21,15 @@
     margin: 0;
 }
 
-.form-div {
+.home-subtitle {
+    font-family: "Josefin Sans", sans-serif;
+    text-align: center;
+    margin: 5px;
+}
+
+.login-form {
     background: white;
     padding: 35px;
     margin: 10%;
     border-radius: 20px;
-}
-
-.row {
-    margin: 0;
-}
-
-h4 {
-    font-family: "Josefin Sans", sans-serif;
-    text-align: center;
-    margin: 5px;
 }

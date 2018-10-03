@@ -22,8 +22,8 @@ const styles = {
 
 const Heading = props =>
     <div className="heading-bg" style={styles[props.bg]}>
-        <h1 className="page-title">{props.title}</h1>
-        <h5 className="page-subtitle">{props.subtitle}</h5>
+        <h1 className="heading-title">{props.title}</h1>
+        <h5 className="heading-subtitle">{props.subtitle}</h5>
     </div>
 ;
 

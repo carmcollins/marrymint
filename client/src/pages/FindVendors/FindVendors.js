@@ -11,16 +11,14 @@ const FindVendors = () =>
                     <div className="card">
                         <div className="card-image">
                             <img src="http://www.placehold.it/200x200" alt="marrymint vendor" />
+                            <a class="btn-floating btn-large halfway-fab waves-effect waves-light teal lighten-3"><i class="material-icons">add</i></a>
                         </div>
                         <div className="card-content">
-                            <span className="card-title">Vendor Name</span>
+                            <p className="card-title red-text text-accent-1">Vendor Name</p>
                             <p>This is where the vendor's description will go.</p>
                         </div>
                         <div className="card-action">
                             <a href="">Visit Website</a>
-                        </div>
-                        <div className="card-action">
-                            <a href="">Add To List</a>
                         </div>
                     </div>
                 </div>
@@ -28,16 +26,14 @@ const FindVendors = () =>
                     <div className="card">
                         <div className="card-image">
                             <img src="http://www.placehold.it/200x200" alt="marrymint vendor" />
+                            <a class="btn-floating btn-large halfway-fab waves-effect waves-light teal lighten-3"><i class="material-icons">add</i></a>
                         </div>
                         <div className="card-content">
-                            <span className="card-title">Vendor Name</span>
+                            <p className="card-title red-text text-accent-1">Vendor Name</p>
                             <p>This is where the vendor's description will go.</p>
                         </div>
                         <div className="card-action">
                             <a href="">Visit Website</a>
-                        </div>
-                        <div className="card-action">
-                            <a href="">Add To List</a>
                         </div>
                     </div>
                 </div>
@@ -45,16 +41,14 @@ const FindVendors = () =>
                     <div className="card">
                         <div className="card-image">
                             <img src="http://www.placehold.it/200x200" alt="marrymint vendor" />
+                            <a class="btn-floating btn-large halfway-fab waves-effect waves-light teal lighten-3"><i class="material-icons">add</i></a>
                         </div>
                         <div className="card-content">
-                            <span className="card-title">Vendor Name</span>
+                            <p className="card-title red-text text-accent-1">Vendor Name</p>
                             <p>This is where the vendor's description will go.</p>
                         </div>
                         <div className="card-action">
                             <a href="">Visit Website</a>
-                        </div>
-                        <div className="card-action">
-                            <a href="">Add To List</a>
                         </div>
                     </div>
                 </div>
