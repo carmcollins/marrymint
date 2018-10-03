@@ -3,14 +3,11 @@
     margin: 0px;
 }
 
-/* .row {
-    margin: 0;
-} */
-
 .home-bg {
-    background-image: url("table-muted.jpg");
     height: 100%;
-    background-position: center center;
+    padding-bottom: 50px;
+    background-image: url("table-muted.jpg");
+    background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
