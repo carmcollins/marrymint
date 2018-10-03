@@ -8,8 +8,6 @@ class RSVPs extends Component {
 
     state = {
         name: "",
-        RSVP_id: "",
-        user_id: "",
         invited: [],
         attending: [],
         notAttending: []
@@ -61,16 +59,13 @@ console.log(res)
             API.addRSVP(this.state.name
             ).catch(err => console.log(err.response));
         }
-
-        //Clears form
-        this.setState({
-            name: ""
-        });
+        this.getRSVPS();
     };
 
     handleAttend = (RSVPid) => {
         console.log(RSVPid)
         API.updateRSVPAttend(RSVPid).then (() => {
+            console.log("AM I RUNNING");
             this.getRSVPS();
         });
     };
@@ -79,6 +74,7 @@ console.log(res)
     handleNoAttend = (RSVPid) => {
         console.log(RSVPid)
         API.updateRSVPNotAttend(RSVPid).then (() => {
+            console.log("AM I RUNNING");
             this.getRSVPS();
         });
     };
@@ -93,30 +89,23 @@ console.log(res)
                     <div className="row">
                         <div className="col s12 m12 l12">
                             <div className="row">
-                                <div className="col s12">
+                                <form className="col s12">
                                     <div className="form-div">
                                         <h4 className="red-text text-accent-1">Add Guests Here</h4>
                                         <div className="row">
-                                            <form className="col s12">
-                                                <div className="form-div">
-                                                    <h4 className="red-text text-accent-1">Add Guests Here</h4>
-                                                    <div className="row">
-                                                        <div className="input-field col s12">
-                                                            <input id="guest-name" type="text" className="validate" name="name" value={this.state.name}
-                                                                onChange={this.handleInputChange} />
-                                                            <label htmlFor="guest-name">Name</label>
-                                                        </div>
-                                                    </div>
-                                                    <br />
-                                                    <div className="center">
-                                                        <a id="addGuest-btn" className="waves-effect waves-teal btn teal lighten-3"
-                                                            onClick={this.handleFormSubmit}>Add Guest</a>
-                                                    </div>
-                                                </div>
-                                            </form>
+                                            <div className="input-field col s12">
+                                                <input id="guest-name" type="text" className="validate" name="name" value={this.state.name}
+                                                    onChange={this.handleInputChange} />
+                                                <label htmlFor="guest-name">Name</label>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div className="center">
+                                            <a id="addGuest-btn" className="waves-effect waves-teal btn teal lighten-3"
+                                                onClick={this.handleFormSubmit}>Add Guest</a>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                             <div className="row">
                                 <div className="col s12 m12 l4">

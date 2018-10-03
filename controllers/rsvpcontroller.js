@@ -1,5 +1,6 @@
 const db = require("../models");
 
+
 // Defining methods for the rsvpController
 module.exports = {
   findById: function(req, res) {
@@ -16,20 +17,18 @@ module.exports = {
         notAttending: false
      
     };
-    console.log("made it to controller. newRSVP is: " + newRSVP)
-    // db.RSVPS.create(newRSVP).then(function(data){
+    console.log(" ------------- made it to controller. newRSVP is: " + JSON.stringify(newRSVP, null, 2));
       db.Users.findOneAndUpdate({ _id: req.user._id}, {$push: {RSVPS: newRSVP}
-    },{new: true}, function(err, data){
-      if (err) {
-        console.log(err);
-      } else{
-        console.log(data)
-      }
-    }
-  )
-      .then(res => res.json(res))
+    })
+      .then(data => {
+        console.log(" ------------ ");
+        console.log(data);
+        console.log(" ------------ ");
+        res.json(data);
+      })
       .catch(err => res.status(422).json(err));
   },
+
 
   findOneAndUpdateAttend:function(req, res) {
 
@@ -47,7 +46,7 @@ module.exports = {
     })
 
 
-      db.Users.findOneAndUpdate({ _id: req.user._id}, {$set: {RSVPS: newRSVPS}
+      db.Users.findOneAndUpdate({ _id: req.user._id}, {$set: {RSVPS: newRSVP}
       }, function(err, data){
         if (err) {
           console.log(err);
@@ -79,7 +78,7 @@ module.exports = {
     })
 
 
-      db.Users.findOneAndUpdate({ _id: req.user._id}, {$set: {RSVPS: newRSVPS}
+      db.Users.findOneAndUpdate({ _id: req.user._id}, {$set: {RSVPS: newRSVP}
       }, function(err, data){
         if (err) {
           console.log(err);
@@ -88,7 +87,9 @@ module.exports = {
         } 
         return res.json(data[0])
       })
-      // .then(res => res.json(res))
+       //.then(res => res.json(res))
       .catch(err => res.status(422).json(err));
 
+}
 };
+
