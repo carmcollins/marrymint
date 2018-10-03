@@ -95,11 +95,26 @@ export default {
 
   //VENDORS
   getVendors: function () {
-    return axios.get("/api/vendors");
+    return axios.get("/api/vendors/", {
+      headers: {
+        Authorization: `Bearer ${this.JWT}`
+      }
+    } );
   },
   // Gets the book with the given id
-  getVendor: function (id) {
-    return axios.get("/api/vendors/" + id);
+  getVendorByCategory: function (category) {
+    return axios.get("/api/vendors/" + category, {
+      headers: {
+        Authorization: `Bearer ${this.JWT}`
+      }
+    });
+  },
+  getVendorById: function (id) {
+    return axios.get("/api/vendors/" + id, {
+      headers: {
+        Authorization: `Bearer ${this.JWT}`
+      }
+    });
   },
 
 
