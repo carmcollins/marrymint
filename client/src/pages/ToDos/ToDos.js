@@ -20,13 +20,11 @@ class ToDos extends Component {
     };
 
     componentDidMount() {
-        //this.setState({user_id: req.user._id});
-        this.getTasks()
+        this.getTasks();
     };
 
     handleCompleted = (taskid) => {
         console.log(taskid);
-    
         API.updateTask(taskid)
         .then(() => {
             this.getTasks();
@@ -37,7 +35,6 @@ class ToDos extends Component {
     getTasks = () => {
         API.getUser()
             .then(res => {
-        
                 const stateObj = {
                     month12: [],
                     month9: [],
@@ -46,7 +43,6 @@ class ToDos extends Component {
                     month2: [],
                     completed: []
                 };
-
                 for (let i = 0; i < res.data.tasks.length; i++) {
                     if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "12") {
                         stateObj.month12.push(res.data.tasks[i])
