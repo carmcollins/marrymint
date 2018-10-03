@@ -4,8 +4,6 @@ import List from "../../components/List"
 import "./ToDos.css";
 import API from "../../utils/API";
 
-
-
 class ToDos extends Component {
     state = {
 
@@ -21,66 +19,62 @@ class ToDos extends Component {
 
     };
 
+    componentDidMount() {
+        //this.setState({user_id: req.user._id});
+        this.getTasks()
+    };
+
+    handleCompleted = (taskid) => {
+        console.log(taskid);
     
+        API.updateTask(taskid)
+        .then(() => {
+            this.getTasks();
+        });
+    };
 
-componentDidMount() {
-    //this.setState({user_id: req.user._id});
-    this.getTasks()
-};
+    //this id needs to be the req.user._id
+    getTasks = () => {
+        API.getUser()
+            .then(res => {
+        
+                const stateObj = {
+                    month12: [],
+                    month9: [],
+                    month6: [],
+                    month4: [],
+                    month2: [],
+                    completed: []
+                };
 
+                for (let i = 0; i < res.data.tasks.length; i++) {
+                    if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "12") {
+                        stateObj.month12.push(res.data.tasks[i])
+                    }
+                    else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "9") {
+                        stateObj.month9.push(res.data.tasks[i])
+                    }
+                    else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "6") {
+                        stateObj.month6.push(res.data.tasks[i])
+                    }
+                    else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "4") {
+                        stateObj.month4.push(res.data.tasks[i])
+                    }
+                    else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "2") {
+                        stateObj.month2.push(res.data.tasks[i])
+                    }
+                    else if (res.data.tasks[i].completed) {
+                        stateObj.completed.push(res.data.tasks[i])
+                    }
+                }
 
-handleCompleted = (taskid) => {
-    console.log(taskid);
-  
-    API.updateTask(taskid)
-    .then(() => {
-        this.getTasks();
-    });
-};
-
-//this id needs to be the req.user._id
-getTasks = () => {
-    API.getUser()
-        .then(res => {
-    
-            const stateObj = {
-                month12: [],
-                month9: [],
-                month6: [],
-                month4: [],
-                month2: [],
-                completed: []
-            };
-
-            for (let i = 0; i < res.data.tasks.length; i++) {
-                if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "12") {
-                    stateObj.month12.push(res.data.tasks[i])
-                }
-                else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "9") {
-                    stateObj.month9.push(res.data.tasks[i])
-                }
-                else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "6") {
-                    stateObj.month6.push(res.data.tasks[i])
-                }
-                else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "4") {
-                    stateObj.month4.push(res.data.tasks[i])
-                }
-                else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "2") {
-                    stateObj.month2.push(res.data.tasks[i])
-                }
-                else if (res.data.tasks[i].completed) {
-                    stateObj.completed.push(res.data.tasks[i])
-                }
+                this.setState(stateObj);
             }
-
-            this.setState(stateObj);
-        }
-        
-        )
-        .catch(err => console.log(err));
-        
-};
-
+            
+            )
+            .catch(err => console.log(err));
+            
+    };
 
 render() {
     return (
@@ -177,11 +171,9 @@ render() {
                     ) : (<p className="collection-item center">{this.state.message}</p>)}
                 </ul>
             </div>
-
-
         </div>
-    )
-}
+        )
+    }
 }
 
 export default ToDos;

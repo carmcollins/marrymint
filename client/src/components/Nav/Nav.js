@@ -2,11 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Nav.css";
 import API from "../../utils/API";
-import {BrowserRouter as Route} from "react-router-dom";
-import App from "../../App";
 import { Redirect } from "react-router"
-
-
 
 class Nav extends Component {
     state = {
@@ -54,18 +50,18 @@ class Nav extends Component {
                             </nav>
                             {/* Mobile Nav */}
                             <ul className="sidenav teal lighten-3" id="mobile-demo">
-                                <li><Link to="/to-do-list">To Do List</Link></li>
-                                <li><Link to="/rsvp">RSVPs</Link></li>
-                                <li><Link to="/vendors">Vendors</Link></li>
-                                <li><Link to="/find-vendors">Find Vendors</Link></li>
-                                <li><Link to="/" onClick={this.handleFormLogOut}>Log Out</Link></li>
+                                <li><Link to="/to-do-list" className="sidenav-close">To Do List</Link></li>
+                                <li><Link to="/rsvp" className="sidenav-close">RSVPs</Link></li>
+                                <li><Link to="/vendors" className="sidenav-close">Vendors</Link></li>
+                                <li><Link to="/find-vendors" className="sidenav-close">Find Vendors</Link></li>
+                                <li><Link to="/" className="sidenav-close" onClick={this.handleFormLogOut}>Log Out</Link></li>
                             </ul>
                         </div>
                     ) : (
                             // Home Page Nav
                             <nav className="navbar-fixed">
                                 <div className="nav-wrapper teal lighten-3">
-                                    <a href="/" className="brand-logo home-logo center">marrymint</a>
+                                    <a href="/" className="brand-logo center">marrymint</a>
                                 </div>
                             </nav>
                         )

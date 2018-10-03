@@ -3,7 +3,7 @@
     height: 350px;
 }
 
-.page-title {
+.heading-title {
     font-family: "Josefin Sans", sans-serif;
     font-size: 4em;
     color: white;
@@ -11,7 +11,7 @@
     margin: 0;
 }
 
-.page-subtitle {
+.heading-subtitle {
     font-family: "Josefin Sans", sans-serif;
     font-weight: 300;
     color: white;
@@ -20,11 +20,11 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .page-title {
+    .heading-title {
         text-align: center;
     }
 
-    .page-subtitle {
+    .heading-subtitle {
         text-align: center;
         padding: 10% 20%;
     }

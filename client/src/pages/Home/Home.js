@@ -65,17 +65,17 @@ class Home extends Component {
             pathname: "./to-do-list"
         }} />)
         return (
-            <div className="bg-photo">
-                <div className="row">
+            <div className="home-bg">
+                <div className="row hi">
                     <div className="col s12 m6 l6">
-                        <h3 className="intro">Track your to-do list. Find trustworthy vendors. Manage your guest list.</h3>
+                        <h3 className="home-title">Track your to-do list. Find trustworthy vendors. Manage your guest list.</h3>
                     </div>
                     <div className="col s12 m6 l6">
                         {/* SIGN UP FORM */}
                         <div id="signup-form" className="row">
                             <form className="col s12">
-                                <div className="form-div">
-                                    <h4 className="red-text text-accent-1">Eat, Drink, & Be Married</h4>
+                                <div className="login-form">
+                                    <h4 className="home-subtitle red-text text-accent-1">Eat, Drink, & Be Married</h4>
                                     <div className="row">
                                         <div className="input-field col s12">
                                             <input id="brides-name" type="text" className="validate" name="brideName" value={this.state.brideName}
@@ -112,8 +112,8 @@ class Home extends Component {
                         {/* LOG IN FORM */}
                         <div id="login-form" className="row">
                             <form className="col s12">
-                                <div className="form-div">
-                                    <h4 className="red-text text-accent-1">Eat, Drink, & Be Married</h4>
+                                <div className="login-form">
+                                    <h4 className="home-subtitle red-text text-accent-1">Eat, Drink, & Be Married</h4>
                                     <div className="row">
                                         <div className="input-field col s12">
                                             <input id="login-email" type="email" className="validate" name="email" value={this.state.email}

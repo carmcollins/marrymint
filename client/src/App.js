@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import ToDos from "./pages/ToDos";
@@ -34,16 +34,21 @@ class App extends Component {
             <Nav isLoggedIn={this.state.isLoggedIn}/>
             {
               !this.state.isLoggedIn ? (
-                [ // If user is not logged in, only allow them to see the / page
+                // If user is not logged in, only allow them to see the / page
+                <Switch>
                   <Route exact path="/" component={Home} />
-                ]
-              ) : ( // If user is logged in, allow them to see all pages
-                [<Route exact path="/" component={Home}/>,
-                <Route exact path="/to-do-list" component={ToDos} />,
-                <Route exact path="/find-vendors" component={FindVendors} />,
-                <Route exact path="/vendors" component={Vendors} />,
-                <Route exact path="/rsvp" component={RSVPs} />,
-                <Route exact path="/not-found" component={NotFound} />]
+                  <Route component={NotFound} />
+                </Switch>
+              ) : (
+                // If user is logged in, allow them to see all pages
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route exact path="/to-do-list" component={ToDos} />
+                  <Route exact path="/find-vendors" component={FindVendors} />
+                  <Route exact path="/vendors" component={Vendors} />
+                  <Route exact path="/rsvp" component={RSVPs} />
+                  <Route component={NotFound} />
+                </Switch>
               )
             }
         </div>
