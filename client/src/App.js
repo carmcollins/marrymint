@@ -7,17 +7,36 @@ import FindVendors from "./pages/FindVendors";
 import Vendors from "./pages/Vendors";
 import RSVPs from "./pages/RSVPs";
 import NotFound from "./pages/NotFound";
+import API from "./utils/API"
 
 class App extends Component {
   state = {
-    isLoggedIn: true
+    isLoggedIn: null
+  }
+
+  markLoggedIn = () => {
+    this.setState({isLoggedIn: true})
+  }
+
+  markLoggedOut = () => {
+    this.setState({isLoggedIn: false})
+  }
+  componentDidMount(){
+    API.setLoginFn(this.markLoggedIn)
+    API.setLogoutFn(this.markLoggedOut)
+    // check if we are hiding our JWT in local storage
+    var JWT = window.localStorage.getItem("JWT");
+    if(JWT){
+      API.setJWT(JWT)
+    }
   }
 
   render() {
+    console.log("Is logged in:", this.state.isLoggedIn);
     return (
       <Router>
         <div>
-            <Nav />
+            <Nav isLoggedIn={this.state.isLoggedIn}/>
             {
               !this.state.isLoggedIn ? (
                 // If user is not logged in, only allow them to see the / page

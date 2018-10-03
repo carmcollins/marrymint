@@ -2,37 +2,32 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Nav.css";
 import API from "../../utils/API";
-import { Redirect } from "react-router"
+import { Redirect } from "react-router";
+import App from "../../App";
+import {BrowserRouter as Route} from "react-router-dom";
 
 class Nav extends Component {
     state = {
-        isLoggedIn: true,
-        redirect: false
+
     }
 
     handleFormLogOut = event => {
         event.preventDefault();
         API.logout();
-        this.setState({redirect: true});
-        
+        window.location.href = '/';         
     };
 
     render() {
-        const { redirect } = this.state
-        if(redirect)
-        return (<Redirect to ={{
-            pathname: "/"
-        }} />)
         return (
             <div>
                 {
-                    this.state.isLoggedIn ? (
+                    this.props.isLoggedIn ? (
                         <div>
                             {/* Main Nav */}
                             <nav className="navbar-fixed">
                                 <div className="nav-wrapper teal lighten-3">
                                     <a href="" className="brand-logo">marrymint</a>
-                                    <a href="" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+                                    <a data-target="mobile-demo" className="sidenav-trigger" ><i className="material-icons">menu</i></a>
                                     <ul className="right hide-on-med-and-down">
                                         <li><Link to="/to-do-list">To Do List</Link></li>
                                         <li><Link to="/rsvp">RSVPs</Link></li>

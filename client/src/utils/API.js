@@ -7,15 +7,36 @@ export default {
   JWT: false,
   setJWT: function (token) {
     this.JWT = token;
+    window.localStorage.setItem("JWT", token)
+    this.onLogin();
   },
   getJWT: function () {
     return this.JWT;
   },
   isLoggedIn: function () {
-    return this.JWT !== false;
+    return this.JWT == true;
   },
-  logout: function () {
+  logout(){
+    this.onLogout();
     this.JWT = false;
+    window.localStorage.setItem("JWT", "")
+    console.log("LOGGED OUT");
+  },
+  setLoginFn(fn){
+    this.loginFn = fn
+  },
+  setLogoutFn(fn){
+    this.logoutFn = fn
+  },
+  onLogin(){
+    if(this.loginFn){
+      this.loginFn()
+    }
+  },
+  onLogout(){
+    if(this.logoutFn){
+      this.logoutFn()
+    }
   },
 
   // Gets user from id
@@ -28,10 +49,11 @@ export default {
   },
   
   // Login user
-  loginUser: function (email, password) {
+  loginUser(email, password){
     return axios.post("/api/users/login", { email, password }).then((response) => {
       if (response.data.token) {
         this.setJWT(response.data.token);
+        this.onLogin()
       }
       return Promise.resolve(response);
     });
