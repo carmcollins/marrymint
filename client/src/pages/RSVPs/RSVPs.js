@@ -9,8 +9,6 @@ class RSVPs extends Component {
 
     state = {
         name: "",
-        RSVP_id: "",
-        user_id: "",
         invited: [],
         attending: [],
         notAttending: []
@@ -24,7 +22,7 @@ class RSVPs extends Component {
     getRSVPS = () => {
         API.getRSVPS()
             .then(res => {
-
+console.log(res)
                 const stateObj = {
                     invited: [],
                     attending: [],
@@ -57,24 +55,30 @@ class RSVPs extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
+        console.log( "this is the new name: " + this.state.name)
         if (this.state.name) {
-            API.addRSVP(this.state.user_id, this.state.name
+            API.addRSVP(this.state.name
             ).catch(err => console.log(err.response));
         }
+        this.getRSVPS();
+    };
 
-        //Clears form
-        this.setState({
-            name: ""
+    handleAttend = (RSVPid) => {
+        console.log(RSVPid)
+        API.updateRSVPAttend(RSVPid).then (() => {
+            console.log("AM I RUNNING");
+            this.getRSVPS();
         });
     };
 
-    handleAttend = event => {
-        event.preventDefault();
-        API.updateRSVPAttend()
-    }
 
-
-    //handleNotAttend
+    handleNoAttend = (RSVPid) => {
+        console.log(RSVPid)
+        API.updateRSVPNotAttend(RSVPid).then (() => {
+            console.log("AM I RUNNING");
+            this.getRSVPS();
+        });
+    };
 
 
     render() {
@@ -89,7 +93,6 @@ class RSVPs extends Component {
                                 <form className="col s12">
                                     <div className="rsvp-form">
                                         <div className="row">
-                                            {/* <h4 className="red-text text-accent-1">Add Guests Here</h4> */}
                                             <div className="input-field col s12">
                                                 <input id="guest-name" type="text" className="validate" name="name" value={this.state.name}
                                                     onChange={this.handleInputChange} />
@@ -102,49 +105,49 @@ class RSVPs extends Component {
                                     </div>
                                 </form>
                             </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col s12 m12 l4">
-                            <h4 className="subtitle center">Invited</h4>
-                            <ul className="collection">
-                                {this.state.invited.length ? (
-                                    <List>
-                                        {this.state.invited.map(invited => (
-                                            <li className="collection-item">
-                                                <div>{invited.name}
-                                                    <a href="" className="secondary-content rsvp-no" onClick={this.handleNoAttend}><i className="material-icons">clear</i></a>
-                                                    <a href="" className="secondary-content rsvp-yes"><i className="material-icons" onClick={this.handleAttend(invited._id)}>done</i></a>
-                                                </div>
-                                            </li>
-                                        ))}
-                                    </List>
-                                ) : (<h2 className="text-center">{this.state.message}</h2>)}
-                            </ul>
-                        </div>
-                        <div className="col s12 m6 l4">
-                            <h4 className="subtitle center">Attending</h4>
-                            <ul className="collection">
-                                {this.state.attending.length ? (
-                                    <List>
-                                        {this.state.attending.map(attending => (
-                                            <li className="collection-item">{attending.name}</li>
-                                        ))}
-                                    </List>
-                                ) : (<h2 className="text-center">{this.state.message}</h2>)}
-                            </ul>
-                        </div>
-                        <div className="col s12 m6 l4">
-                            <h4 className="subtitle center">Not Attending</h4>
-                            <ul className="collection">
-                                {this.state.notAttending.length ? (
-                                    <List>
-                                        {this.state.notAttending.map(notAttending => (
-                                            <li className="collection-item">{notAttending.name}</li>
-                                        ))}
-                                    </List>
-                                ) : (<h2 className="text-center">{this.state.message}</h2>)}
-                            </ul>
+                            <div className="row">
+                                <div className="col s12 m12 l4">
+                                    <h4 className="subtitle center">Invited</h4>
+                                    <ul className="collection">
+                                        {this.state.invited.length ? (
+                                            <List>
+                                                {this.state.invited.map(invited => (
+                                                    <li className="collection-item" key={invited._id}>
+                                                        <div>{invited.name}
+                                                            <a href="" className="secondary-content rsvp-no" onClick={() => this.handleNoAttend(invited._id)}><i className="material-icons">clear</i></a>
+                                                            <a href="" className="secondary-content rsvp-yes"><i className="material-icons" onClick={() => this.handleAttend(invited._id)}>done</i></a>
+                                                        </div>
+                                                    </li>
+                                                ))}
+                                            </List>
+                                        ) : (<h2 className="text-center">{this.state.message}</h2>)}
+                                    </ul>
+                                </div>
+                                <div className="col s12 m6 l4">
+                                    <h4 className="subtitle center">Attending</h4>
+                                    <ul className="collection">
+                                        {this.state.attending.length ? (
+                                            <List>
+                                                {this.state.attending.map(attending => (
+                                                    <li className="collection-item" key={attending._id}>{attending.name}</li>
+                                                ))}
+                                            </List>
+                                        ) : (<h2 className="text-center">{this.state.message}</h2>)}
+                                    </ul>
+                                </div>
+                                <div className="col s12 m6 l4">
+                                    <h4 className="subtitle center">Not Attending</h4>
+                                    <ul className="collection">
+                                        {this.state.notAttending.length ? (
+                                            <List>
+                                                {this.state.notAttending.map(notAttending => (
+                                                    <li className="collection-item" key={notAttending._id}>{notAttending.name}</li>
+                                                ))}
+                                            </List>
+                                        ) : (<h2 className="text-center">{this.state.message}</h2>)}
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
