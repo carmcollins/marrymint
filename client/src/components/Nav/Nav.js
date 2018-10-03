@@ -2,35 +2,41 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Nav.css";
 import API from "../../utils/API";
-
-
+import {BrowserRouter as Route} from "react-router-dom";
+import App from "../../App";
 import { Redirect } from "react-router"
 
 
 
 class Nav extends Component {
     state = {
-        isLoggedIn: true,
-        redirect: false
+        // redirect: false
     }
 
     handleFormLogOut = event => {
         event.preventDefault();
         API.logout();
-        this.setState({redirect: true});
+        // this.setState({redirect: true});
         
     };
 
+    // hamburgerClick = event => {
+    //     event.preventDefault();
+    //     console.log("Button clicked");
+    // }
+
     render() {
-        const { redirect } = this.state
-        if(redirect)
-        return (<Redirect to ={{
-            pathname: "/"
-        }} />)
+        // const { redirect } = this.state
+        // if(redirect)
+        // return (  
+        //     <div>
+        // <Redirect to="/"/>
+        // <Route path="/" component={App}/>
+        // </div>)
         return (
             <div>
                 {
-                    this.state.isLoggedIn ? (
+                    this.props.isLoggedIn ? (
                         <div>
                             {/* Main Nav */}
                             <nav className="navbar-fixed">

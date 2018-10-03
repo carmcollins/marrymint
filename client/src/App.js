@@ -7,24 +7,38 @@ import FindVendors from "./pages/FindVendors";
 import Vendors from "./pages/Vendors";
 import RSVPs from "./pages/RSVPs";
 import NotFound from "./pages/NotFound";
+import API from "./utils/API"
 
 class App extends Component {
   state = {
-    isLoggedIn: true
+    isLoggedIn: false
+  }
+
+  componentDidMount() { 
+    API.setLoginFn(this.markLoggedIn)
+    API.setLogoutFn(this.markLoggedOut)
+  }
+
+  markLoggedIn = () => {
+    this.setState({isLoggedIn: true})
+  }
+
+  markLoggedOut = () => {
+    this.setState({isLoggedIn: false})
   }
 
   render() {
     return (
       <Router>
         <div>
-            <Nav />
+            <Nav isLoggedIn={this.state.isLoggedIn}/>
             {
               !this.state.isLoggedIn ? (
                 [ // If user is not logged in, only allow them to see the / page
                   <Route exact path="/" component={Home} />
                 ]
               ) : ( // If user is logged in, allow them to see all pages
-                [<Route exact path="/" component={Home} />,
+                [<Route exact path="/" component={Home}/>,
                 <Route exact path="/to-do-list" component={ToDos} />,
                 <Route exact path="/find-vendors" component={FindVendors} />,
                 <Route exact path="/vendors" component={Vendors} />,
