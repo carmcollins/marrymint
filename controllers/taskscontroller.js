@@ -19,7 +19,6 @@ module.exports = {
     console.log(" ----------- got here");
     console.log(" ----------- " + req.body.taskId);
 
-    //asdfasdfasdf
 
     const newTasks = req.user.tasks.map(elem => {
       if(elem._id == req.body.taskId) {

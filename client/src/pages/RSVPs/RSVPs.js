@@ -23,7 +23,7 @@ class RSVPs extends Component {
     getRSVPS = () => {
         API.getRSVPS()
             .then(res => {
-
+console.log(res)
                 const stateObj = {
                     invited: [],
                     attending: [],
@@ -56,8 +56,9 @@ class RSVPs extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
+        console.log( "this is the new name: " + this.state.name)
         if (this.state.name) {
-            API.addRSVP(this.state.user_id, this.state.name
+            API.addRSVP(this.state.name
             ).catch(err => console.log(err.response));
         }
 
@@ -67,13 +68,20 @@ class RSVPs extends Component {
         });
     };
 
-    handleAttend = event => {
-        event.preventDefault();
-        API.updateRSVPAttend()
-    }
+    handleAttend = (RSVPid) => {
+        console.log(RSVPid)
+        API.updateRSVPAttend(RSVPid).then (() => {
+            this.getRSVPS();
+        });
+    };
 
 
-    //handleNotAttend
+    handleNoAttend = (RSVPid) => {
+        console.log(RSVPid)
+        API.updateRSVPNotAttend(RSVPid).then (() => {
+            this.getRSVPS();
+        });
+    };
 
 
     render() {
@@ -117,10 +125,10 @@ class RSVPs extends Component {
                                         {this.state.invited.length ? (
                                             <List>
                                                 {this.state.invited.map(invited => (
-                                                    <li className="collection-item">
+                                                    <li className="collection-item" key={invited._id}>
                                                         <div>{invited.name}
-                                                            <a href="" className="secondary-content rsvp-no" onClick={this.handleNoAttend}><i className="material-icons">clear</i></a>
-                                                            <a href="" className="secondary-content rsvp-yes"><i className="material-icons" onClick={this.handleAttend(invited._id)}>done</i></a>
+                                                            <a href="" className="secondary-content rsvp-no" onClick={() => this.handleNoAttend(invited._id)}><i className="material-icons">clear</i></a>
+                                                            <a href="" className="secondary-content rsvp-yes"><i className="material-icons" onClick={() => this.handleAttend(invited._id)}>done</i></a>
                                                         </div>
                                                     </li>
                                                 ))}
@@ -134,7 +142,7 @@ class RSVPs extends Component {
                                         {this.state.attending.length ? (
                                             <List>
                                                 {this.state.attending.map(attending => (
-                                                    <li className="collection-item">{attending.name}</li>
+                                                    <li className="collection-item" key={attending._id}>{attending.name}</li>
                                                 ))}
                                             </List>
                                         ) : (<h2 className="text-center">{this.state.message}</h2>)}
@@ -146,7 +154,7 @@ class RSVPs extends Component {
                                         {this.state.notAttending.length ? (
                                             <List>
                                                 {this.state.notAttending.map(notAttending => (
-                                                    <li className="collection-item">{notAttending.name}</li>
+                                                    <li className="collection-item" key={notAttending._id}>{notAttending.name}</li>
                                                 ))}
                                             </List>
                                         ) : (<h2 className="text-center">{this.state.message}</h2>)}
