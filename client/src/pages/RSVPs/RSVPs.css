@@ -1,0 +1,15 @@
+.rsvp-form {
+    width: 50%;
+    margin: 50px 25% 0 25%;
+}
+
+#addGuest-btn {
+    margin-top: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+    .rsvp-form {
+        width: 100%;
+        margin: 50px 0 0 0;
+    }
+}

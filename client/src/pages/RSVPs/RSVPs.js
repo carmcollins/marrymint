@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./RSVPs.css";
 import Heading from "../../components/Heading";
 import List from "../../components/List"
 import API from "../../utils/API";
@@ -90,19 +91,16 @@ console.log(res)
                         <div className="col s12 m12 l12">
                             <div className="row">
                                 <form className="col s12">
-                                    <div className="form-div">
-                                        <h4 className="red-text text-accent-1">Add Guests Here</h4>
+                                    <div className="rsvp-form">
                                         <div className="row">
                                             <div className="input-field col s12">
                                                 <input id="guest-name" type="text" className="validate" name="name" value={this.state.name}
                                                     onChange={this.handleInputChange} />
                                                 <label htmlFor="guest-name">Name</label>
+                                                <div className="center">
+                                                    <a id="addGuest-btn" className="waves-effect waves-teal btn teal lighten-3" onClick={this.handleFormSubmit}>Add Guest</a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <br />
-                                        <div className="center">
-                                            <a id="addGuest-btn" className="waves-effect waves-teal btn teal lighten-3"
-                                                onClick={this.handleFormSubmit}>Add Guest</a>
                                         </div>
                                     </div>
                                 </form>
@@ -154,8 +152,8 @@ console.log(res)
                     </div>
                 </div>
             </div>
-                        )
-                    }
-                };
+        )
+    }
+};
                 
 export default RSVPs;
