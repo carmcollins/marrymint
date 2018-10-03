@@ -12,7 +12,7 @@ export default {
     return this.JWT;
   },
   isLoggedIn: function () {
-    return this.JWT != false;
+    return this.JWT !== false;
   },
   logout: function () {
     this.JWT = false;
@@ -65,29 +65,30 @@ export default {
     });
   },
   // Updates the RSVP with the given id to attend
-  updateRSVPAttend: function (updatedRSVP) {
-    let id = updatedRSVP._id;
-    let updatedRSVPNew = {
-      attending: true,
-    };
-    return axios.updateAttend("/api/rsvps/" + id, updatedRSVPNew);
-  },
-  // Updates the RSVP with the given id to not attend
-  updateRSVPNotAttend: function (updatedRSVP) {
-    let id = updatedRSVP._id;
-    let updatedRSVPNew = {
-      notAttending: true,
-    };
-    return axios.updateRSVPNotAttend("/api/rsvps/" + id, updatedRSVPNew);
-  },
-  // Saves an article to the database
-
-  addRSVP: function(id, newRSVP) {
-    return axios.post("/api/rsvps",{
+  updateRSVPAttend: function (RSVPid) {
+    return axios.put("/api/rsvps/attend", { RSVPid :RSVPid},{
       headers: {
         Authorization: `Bearer ${this.JWT}`
       }
-    }, { newRSVP:newRSVP });
+    } );
+  },
+  // Updates the RSVP with the given id to not attend
+  updateRSVPNotAttend: function (RSVPid) {
+    return axios.put("/api/rsvps/noattend", { RSVPid :RSVPid},{
+      headers: {
+        Authorization: `Bearer ${this.JWT}`
+      }
+    } );
+  },
+
+  // Saves an article to the database
+
+  addRSVP: function(name) {
+    return axios.post("/api/rsvps/",{ name: name}, {
+      headers: {
+        Authorization: `Bearer ${this.JWT}`
+      }
+    });
 
   },
 
@@ -126,7 +127,7 @@ export default {
         Authorization: `Bearer ${this.JWT}`
       }
     });
-  },
+  }
 
 
 };

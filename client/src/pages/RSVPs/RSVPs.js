@@ -8,8 +8,6 @@ class RSVPs extends Component {
 
     state = {
         name: "",
-        RSVP_id: "",
-        user_id: "",
         invited: [],
         attending: [],
         notAttending: []
@@ -23,7 +21,7 @@ class RSVPs extends Component {
     getRSVPS = () => {
         API.getRSVPS()
             .then(res => {
-
+console.log(res)
                 const stateObj = {
                     invited: [],
                     attending: [],
@@ -56,24 +54,30 @@ class RSVPs extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
+        console.log( "this is the new name: " + this.state.name)
         if (this.state.name) {
-            API.addRSVP(this.state.user_id, this.state.name
+            API.addRSVP(this.state.name
             ).catch(err => console.log(err.response));
         }
+        this.getRSVPS();
+    };
 
-        //Clears form
-        this.setState({
-            name: ""
+    handleAttend = (RSVPid) => {
+        console.log(RSVPid)
+        API.updateRSVPAttend(RSVPid).then (() => {
+            console.log("AM I RUNNING");
+            this.getRSVPS();
         });
     };
 
-    handleAttend = event => {
-        event.preventDefault();
-        API.updateRSVPAttend()
-    }
 
-
-    //handleNotAttend
+    handleNoAttend = (RSVPid) => {
+        console.log(RSVPid)
+        API.updateRSVPNotAttend(RSVPid).then (() => {
+            console.log("AM I RUNNING");
+            this.getRSVPS();
+        });
+    };
 
 
     render() {
@@ -85,30 +89,23 @@ class RSVPs extends Component {
                     <div className="row">
                         <div className="col s12 m12 l12">
                             <div className="row">
-                                <div className="col s12">
+                                <form className="col s12">
                                     <div className="form-div">
                                         <h4 className="red-text text-accent-1">Add Guests Here</h4>
                                         <div className="row">
-                                            <form className="col s12">
-                                                <div className="form-div">
-                                                    <h4 className="red-text text-accent-1">Add Guests Here</h4>
-                                                    <div className="row">
-                                                        <div className="input-field col s12">
-                                                            <input id="guest-name" type="text" className="validate" name="name" value={this.state.name}
-                                                                onChange={this.handleInputChange} />
-                                                            <label htmlFor="guest-name">Name</label>
-                                                        </div>
-                                                    </div>
-                                                    <br />
-                                                    <div className="center">
-                                                        <a id="addGuest-btn" className="waves-effect waves-teal btn teal lighten-3"
-                                                            onClick={this.handleFormSubmit}>Add Guest</a>
-                                                    </div>
-                                                </div>
-                                            </form>
+                                            <div className="input-field col s12">
+                                                <input id="guest-name" type="text" className="validate" name="name" value={this.state.name}
+                                                    onChange={this.handleInputChange} />
+                                                <label htmlFor="guest-name">Name</label>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div className="center">
+                                            <a id="addGuest-btn" className="waves-effect waves-teal btn teal lighten-3"
+                                                onClick={this.handleFormSubmit}>Add Guest</a>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                             <div className="row">
                                 <div className="col s12 m12 l4">
@@ -117,10 +114,10 @@ class RSVPs extends Component {
                                         {this.state.invited.length ? (
                                             <List>
                                                 {this.state.invited.map(invited => (
-                                                    <li className="collection-item">
+                                                    <li className="collection-item" key={invited._id}>
                                                         <div>{invited.name}
-                                                            <a href="" className="secondary-content rsvp-no" onClick={this.handleNoAttend}><i className="material-icons">clear</i></a>
-                                                            <a href="" className="secondary-content rsvp-yes"><i className="material-icons" onClick={this.handleAttend(invited._id)}>done</i></a>
+                                                            <a href="" className="secondary-content rsvp-no" onClick={() => this.handleNoAttend(invited._id)}><i className="material-icons">clear</i></a>
+                                                            <a href="" className="secondary-content rsvp-yes"><i className="material-icons" onClick={() => this.handleAttend(invited._id)}>done</i></a>
                                                         </div>
                                                     </li>
                                                 ))}
@@ -134,7 +131,7 @@ class RSVPs extends Component {
                                         {this.state.attending.length ? (
                                             <List>
                                                 {this.state.attending.map(attending => (
-                                                    <li className="collection-item">{attending.name}</li>
+                                                    <li className="collection-item" key={attending._id}>{attending.name}</li>
                                                 ))}
                                             </List>
                                         ) : (<h2 className="text-center">{this.state.message}</h2>)}
@@ -146,7 +143,7 @@ class RSVPs extends Component {
                                         {this.state.notAttending.length ? (
                                             <List>
                                                 {this.state.notAttending.map(notAttending => (
-                                                    <li className="collection-item">{notAttending.name}</li>
+                                                    <li className="collection-item" key={notAttending._id}>{notAttending.name}</li>
                                                 ))}
                                             </List>
                                         ) : (<h2 className="text-center">{this.state.message}</h2>)}

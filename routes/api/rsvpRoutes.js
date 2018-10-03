@@ -12,10 +12,11 @@ router
   .route("/")
   .post(rsvpController.create);
 
-  // router
-  // .route("/:id")
-  // .get(rsvpController.findById)
-  // .put(rsvpController.updateAttend);
+  router.route("/attend")
+  .put(rsvpController.findOneAndUpdateAttend);
+
+  router.route("/noattend")
+  .put(rsvpController.findOneAndUpdateNoAttend);
 
 
 module.exports = router;
