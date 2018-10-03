@@ -7,6 +7,8 @@ export default {
   JWT: false,
   setJWT: function (token) {
     this.JWT = token;
+    window.localStorage.setItem("JWT", token)
+    this.onLogin();
   },
   getJWT: function () {
     return this.JWT;
@@ -17,6 +19,7 @@ export default {
   logout(){
     this.onLogout();
     this.JWT = false;
+    window.localStorage.setItem("JWT", "")
     console.log("LOGGED OUT");
   },
   setLoginFn(fn){

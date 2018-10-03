@@ -58,9 +58,14 @@ console.log(res)
         console.log( "this is the new name: " + this.state.name)
         if (this.state.name) {
             API.addRSVP(this.state.name
-            ).catch(err => console.log(err.response));
+            ).then(this.setState({
+                name: ""
+            }))
+            .catch(err => console.log(err.response));
         }
+
         this.getRSVPS();
+
     };
 
     handleAttend = (RSVPid) => {

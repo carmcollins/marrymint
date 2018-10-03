@@ -11,12 +11,7 @@ import API from "./utils/API"
 
 class App extends Component {
   state = {
-    isLoggedIn: false
-  }
-
-  componentDidMount() { 
-    API.setLoginFn(this.markLoggedIn)
-    API.setLogoutFn(this.markLoggedOut)
+    isLoggedIn: null
   }
 
   markLoggedIn = () => {
@@ -26,8 +21,18 @@ class App extends Component {
   markLoggedOut = () => {
     this.setState({isLoggedIn: false})
   }
+  componentDidMount(){
+    API.setLoginFn(this.markLoggedIn)
+    API.setLogoutFn(this.markLoggedOut)
+    // check if we are hiding our JWT in local storage
+    var JWT = window.localStorage.getItem("JWT");
+    if(JWT){
+      API.setJWT(JWT)
+    }
+  }
 
   render() {
+    console.log("Is logged in:", this.state.isLoggedIn);
     return (
       <Router>
         <div>
