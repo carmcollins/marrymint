@@ -38,8 +38,8 @@ Vendors.insertMany([
     {
         "name": "Paige Newton", 
         "category": "Photographer",
-        "link": "https://www.birddogwedding.com/",
-        "photo": "http://www.paigenewtonweddings.com/",
+        "link": "http://www.paigenewtonweddings.com/",
+        "photo": "https://i.postimg.cc/x1fKTsLD/paige-newton.jpg",
         "description": "Photojournalistic photographer with a modern touch."
     },
     {

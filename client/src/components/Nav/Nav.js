@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Nav.css";
 import API from "../../utils/API";
-import { Redirect } from "react-router";
-import App from "../../App";
-import {BrowserRouter as Route} from "react-router-dom";
 
 class Nav extends Component {
     state = {
