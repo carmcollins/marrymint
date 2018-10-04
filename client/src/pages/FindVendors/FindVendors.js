@@ -22,8 +22,8 @@ class FindVendors extends Component {
     //allVendors
     getAllVendors = () => {
         API.getVendors().then(res => {
-            console.log(res);
-            this.setState({ vendors: res });
+            console.log(res.data);
+            this.setState({ vendors: res.data });
         }).catch(err => console.log(err));
     };
 
@@ -77,7 +77,7 @@ class FindVendors extends Component {
                                     <div className="card" key={vendors._id}>
                                         <div className="card-image">
                                             <img src={vendors.photo} alt="marrymint vendor" />
-                                            <a class="btn-floating btn-large halfway-fab waves-effect waves-light teal lighten-3" onClick={() => this.handleAddButton(vendors._id)}><i class="material-icons">add</i></a>
+                                            <a className="btn-floating btn-large halfway-fab waves-effect waves-light teal lighten-3" onClick={() => this.handleAddButton(vendors._id)}><i className="material-icons">add</i></a>
                                         </div>
                                         <div className="card-content">
                                             <p className="card-title red-text text-accent-1">{vendors.name}</p>
