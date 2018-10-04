@@ -77,18 +77,14 @@ class FindVendors extends Component {
                                     <div className="card" key={vendors._id}>
                                         <div className="card-image">
                                             <img src={vendors.photo} alt="marrymint vendor" />
-<<<<<<< HEAD
-                                            <a class="btn-floating btn-large halfway-fab waves-effect waves-light teal lighten-3" onClick={() => this.handleAddButton(vendors._id)}><i class="material-icons">add</i></a>
-=======
                                             <a className="btn-floating btn-large halfway-fab waves-effect waves-light teal lighten-3" onClick={() => this.handleAddButton(vendors._id)}><i className="material-icons">add</i></a>
->>>>>>> 0aa7c0450a303940ff6e4ef5b78118901cfaddd0
                                         </div>
                                         <div className="card-content">
                                             <p className="card-title red-text text-accent-1">{vendors.name}</p>
                                             <p>{vendors.description}</p>
                                         </div>
                                         <div className="card-action">
-                                            <a href={vendors.link}>Visit Website</a>
+                                            <a href={vendors.link} target="blank">Visit Website</a>
                                         </div>
                                     </div>
                                 </div>
