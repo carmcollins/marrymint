@@ -8,8 +8,8 @@ const UsersSchema = new Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
   brideName: { type: String, required: true },
-  vendors: {type: Schema.Types.ObjectId,
-    ref: 'Vendors'},
+  vendors: [{type: Schema.Types.ObjectId,
+    ref: 'Vendors'}],
    tasks:[tasksSchema],
    RSVPS:[RSVPSchema]
 });

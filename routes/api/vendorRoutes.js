@@ -5,11 +5,13 @@ const vendorController = require("../../controllers/vendorController");
 router.route("/")
   .get(vendorController.findAll);
 
-// Matches with "/api/vendors/:id"
+
 router
   .route("/:id")
   .get(vendorController.findById);
-  //need to populate with user id??
-  
+
+
+  router.route("/:category")
+  .get(vendorController.findByCategory);
 
 module.exports = router;

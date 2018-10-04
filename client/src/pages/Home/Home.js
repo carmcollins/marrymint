@@ -48,7 +48,7 @@ class Home extends Component {
                 password: this.state.password
             }).then(() =>
             this.setState({redirect: true})
-            )
+            ).then(()=> API.isLoggedIn())
         }
 
         //Clears form
@@ -57,7 +57,6 @@ class Home extends Component {
             password: ""
         });
     };
-
 
     render() {
         const { redirect } = this.state
