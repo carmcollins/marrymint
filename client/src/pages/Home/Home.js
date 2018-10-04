@@ -40,13 +40,6 @@ class Home extends Component {
                     ).then(()=> API.isLoggedIn())
                 })
         }
-
-        //Clears form
-        // this.setState({
-        //     email: "",
-        //     password: "",
-        //     brideName: ""
-        // });
     };
 
     handleFormLogin = event => {

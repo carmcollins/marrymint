@@ -120,6 +120,7 @@ export default {
   },
   // Gets the book with the given id
   getVendorByCategory: function (category) {
+    console.log("category: " + category);
     return axios.get("/api/vendors/" + category, {
       headers: {
         Authorization: `Bearer ${this.JWT}`

@@ -27,6 +27,7 @@ module.exports = {
 },
 
   findByCategory: function(req, res) {
+    console.log(req.params.category);
     Vendors
       .find({category: req.params.category})
       .then(dbVendors => res.json(dbVendors))
