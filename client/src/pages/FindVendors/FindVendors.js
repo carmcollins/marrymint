@@ -19,32 +19,32 @@ class FindVendors extends Component {
     componentDidMount() {
         this.getAllVendors();
     }
-//allVendors
-getAllVendors = () => {
-    API.getVendors().then( res => {
-        console.log (res);
-        this.setState({ vendors: res});
-    }).catch(err => console.log(err));
-};
+    //allVendors
+    getAllVendors = () => {
+        API.getVendors().then(res => {
+            console.log(res);
+            this.setState({ vendors: res });
+        }).catch(err => console.log(err));
+    };
 
-//handleAllButton
-handleAllButton = () => {
-    this.getAllVendors();
-};
+    //handleAllButton
+    handleAllButton = () => {
+        this.getAllVendors();
+    };
 
-//handleFilterButton
-handleFilterButton = (category) => {
-API.getVendorByCategory(category)
-.then ((res) => {
-    this.setState({vendors: res})
-})
-.catch(err => console.log(err.response));
-};
+    //handleFilterButton
+    handleFilterButton = (category) => {
+        API.getVendorByCategory(category)
+            .then((res) => {
+                this.setState({ vendors: res })
+            })
+            .catch(err => console.log(err.response));
+    };
 
-//handleAddButton
-handleAddButton = (vendorid) => {
-    API.getVendorById(vendorid);
-}
+    //handleAddButton
+    handleAddButton = (vendorid) => {
+        API.getVendorById(vendorid);
+    }
 
     render() {
 
@@ -67,30 +67,30 @@ handleAddButton = (vendorid) => {
                         <a href="/find-vendors/videographers" className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton("videographers")}>Videographers</a>
                         <a href="/find-vendors/beauty" className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton("beauty")}>Beauty</a>
 
-
+                    </div>
                     <div className="row">
 
                         {/* start here */}
                         <Card>
                             {this.state.vendors.map(vendors => (
-                        <div className="col s12 m4">
-                            <div className="card" key={vendors._id}>
-                                <div className="card-image">
-                                    <img src={vendors.photo} alt="marrymint vendor" />
-                                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light teal lighten-3"onClick={() => this.handleAddButton(vendors._id)}><i class="material-icons">add</i></a>
+                                <div className="col s12 m4">
+                                    <div className="card" key={vendors._id}>
+                                        <div className="card-image">
+                                            <img src={vendors.photo} alt="marrymint vendor" />
+                                            <a class="btn-floating btn-large halfway-fab waves-effect waves-light teal lighten-3" onClick={() => this.handleAddButton(vendors._id)}><i class="material-icons">add</i></a>
+                                        </div>
+                                        <div className="card-content">
+                                            <p className="card-title red-text text-accent-1">{vendors.name}</p>
+                                            <p>{vendors.description}</p>
+                                        </div>
+                                        <div className="card-action">
+                                            <a href={vendors.link}>Visit Website</a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="card-content">
-                                    <p className="card-title red-text text-accent-1">{vendors.name}</p>
-                                    <p>{vendors.description}</p>
-                                </div>
-                                <div className="card-action">
-                                    <a href={vendors.link}>Visit Website</a>
-                                </div>
-                            </div>
-                        </div>
-                         ))}
+                            ))}
                         </Card>
-                
+
 
                         {/* ends here */}
 
