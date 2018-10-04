@@ -66,7 +66,7 @@ class Home extends Component {
         }} />)
         return (
             <div className="home-bg">
-                <div className="row hi">
+                <div className="row">
                     <div className="col s12 m6 l6">
                         <h3 className="home-title">Track your to-do list. Find trustworthy vendors. Manage your guest list.</h3>
                     </div>
