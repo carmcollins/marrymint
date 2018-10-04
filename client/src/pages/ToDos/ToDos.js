@@ -159,7 +159,7 @@ render() {
                             {this.state.completed.map(completed => (
                                 <li className="collection-item" key={completed._id}>
                                     <div>{completed.task}
-                                        <a href="#!" className="secondary-content"><i className="material-icons">done</i></a>
+                                        <a href="#!" className="secondary-content"></a>
                                     </div>
                                 </li>
                             ))}

@@ -34,12 +34,6 @@ class FindVendors extends Component {
         const filter = this.state.vendors.filter(vendors => vendors.category === category);
         this.setState({ filterVendor: filter });
 
-        // API.getVendorByCategory(category)
-        //     .then((res) => {
-        //         console.log(res);
-        //         this.setState({ vendors: [res.data] })
-        //     })
-        //     .catch(err => console.log(err.response));
     };
 
     //handleAddButton
@@ -88,6 +82,7 @@ class FindVendors extends Component {
                                             <div className="card-action">
                                                 <a href={vendors.link}>Visit Website</a>
                                             </div>
+
                                         </div>
                                     </div>
                                 ))}
