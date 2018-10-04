@@ -1,9 +1,10 @@
 const db = require("../models");
+const Vendors = require("../models/vendors");
 
 // Defining methods for the vendorController
 module.exports = {
   findAll: function(req, res) {
-    db.Vendors
+    Vendors
       .find({})
       .then(dbVendors => res.json(dbVendors))
       .catch(err => res.status(422).json(err));
@@ -24,7 +25,7 @@ module.exports = {
 
 
   findByCategory: function(req, res) {
-    db.Vendors
+    Vendors
       .find({category: req.params.category})
       .then(dbVendors => res.json(dbVendors))
       .catch(err => res.status(422).json(err));
