@@ -8,7 +8,7 @@ import API from "../../utils/API";
 class FindVendors extends Component {
 
     state = {
-        vendors= [],
+        vendors: [],
         name: "",
         category: "",
         link: "",
@@ -55,16 +55,16 @@ handleAddButton = (vendorid) => {
                     <h4 className="subtitle center">Find Vendors</h4>
                     <div className="filter-btns">
                         <a href="/find-vendors" className="btn-small filter-btn red accent-1" onClick={() => this.handleAllButton()}>All</a>
-                        <a href="/find-vendors/planners" className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton(planners)}>Planners</a>
-                        <a href="/find-vendors/photographers" className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton(photographers)}>Photographers</a>
-                        <a href="/find-vendors/florists" className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton(florists)}>Florists</a>
-                        <a href="/find-vendors/rentals" className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton(rentals)}>Rentals</a>
-                        <a href="/find-vendors/venues" className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton(venues)}>Venues</a>
-                        <a href="/find-vendors/caterers" className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton(caterers)}>Caterers</a>
-                        <a href="/find-vendors/bakers" className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton(bakers)}>Bakers</a>
-                        <a href="/find-vendors/stationery" className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton(stationery)}>Stationery</a>
-                        <a href="/find-vendors/videographers" className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton(videographers)}>Videographers</a>
-                        <a href="/find-vendors/beauty" className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton(beauty)}>Beauty</a>
+                        <a href="/find-vendors/planners" className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton("planners")}>Planners</a>
+                        <a href="/find-vendors/photographers" className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton("photographers")}>Photographers</a>
+                        <a href="/find-vendors/florists" className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton("florists")}>Florists</a>
+                        <a href="/find-vendors/rentals" className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton("rentals")}>Rentals</a>
+                        <a href="/find-vendors/venues" className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton("venues")}>Venues</a>
+                        <a href="/find-vendors/caterers" className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton("caterers")}>Caterers</a>
+                        <a href="/find-vendors/bakers" className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton("bakers")}>Bakers</a>
+                        <a href="/find-vendors/stationery" className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton("stationery")}>Stationery</a>
+                        <a href="/find-vendors/videographers" className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton("videographers")}>Videographers</a>
+                        <a href="/find-vendors/beauty" className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton("beauty")}>Beauty</a>
 
                     </div>
 
@@ -85,7 +85,7 @@ handleAddButton = (vendorid) => {
                                     <p>{vendors.description}</p>
                                 </div>
                                 <div className="card-action">
-                                    <a href={vendor.link}>Visit Website</a>
+                                    <a href={vendors.link}>Visit Website</a>
                                 </div>
                             </div>
                         </div>
