@@ -28,15 +28,25 @@ class Home extends Component {
                 email: this.state.email,
                 password: this.state.password
             })
-                .catch(err => console.log(err.response));
+                .catch(err => console.log(err.response))
+                .then(() => {
+                console.log("Email: " + this.state.email);
+                console.log("Password: " + this.state.password);
+                    API.loginUser({
+                        email: this.state.email,
+                        password: this.state.password
+                    }).then(() =>
+                    this.setState({redirect: true})
+                    ).then(()=> API.isLoggedIn())
+                })
         }
 
         //Clears form
-        this.setState({
-            email: "",
-            password: "",
-            brideName: ""
-        });
+        // this.setState({
+        //     email: "",
+        //     password: "",
+        //     brideName: ""
+        // });
     };
 
     handleFormLogin = event => {
