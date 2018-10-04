@@ -65,7 +65,6 @@ handleAddButton = (vendorid) => {
                         <a href="/find-vendors/stationery" className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton(stationery)}>Stationery</a>
                         <a href="/find-vendors/videographers" className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton(videographers)}>Videographers</a>
                         <a href="/find-vendors/beauty" className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton(beauty)}>Beauty</a>
-
                     </div>
 
 
