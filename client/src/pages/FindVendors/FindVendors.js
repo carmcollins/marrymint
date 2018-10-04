@@ -35,10 +35,10 @@ class FindVendors extends Component {
     //handleFilterButton
     handleFilterButton = (category) => {
         API.getVendorByCategory(category)
-            .then((res) => {
-                this.setState({ vendors: res })
+            .then(res => {
+                this.setState({ vendors: res.data })
             })
-            .catch(err => console.log(err.response));
+            .catch(err => console.log(err));
     };
 
     //handleAddButton
@@ -73,8 +73,8 @@ class FindVendors extends Component {
                         {/* start here */}
                         <Card>
                             {this.state.vendors.map(vendors => (
-                                <div className="col s12 m4">
-                                    <div className="card" key={vendors._id}>
+                                <div className="col s12 m4" key={vendors._id}>
+                                    <div className="card">
                                         <div className="card-image">
                                             <img src={vendors.photo} alt="marrymint vendor" />
                                             <a className="btn-floating btn-large halfway-fab waves-effect waves-light teal lighten-3" onClick={() => this.handleAddButton(vendors._id)}><i className="material-icons">add</i></a>
