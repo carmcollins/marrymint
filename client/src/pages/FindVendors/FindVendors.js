@@ -84,7 +84,7 @@ class FindVendors extends Component {
                                             <p>{vendors.description}</p>
                                         </div>
                                         <div className="card-action">
-                                            <a href={vendors.link}>Visit Website</a>
+                                            <a href={vendors.link} target="blank">Visit Website</a>
                                         </div>
                                     </div>
                                 </div>

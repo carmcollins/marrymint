@@ -6,3 +6,27 @@
     text-align: center;
     margin: 40px 0;
 }
+
+@media only screen and (max-width: 1161px) {
+    .card-content {
+        height: 150px;
+    }
+}
+
+@media only screen and (max-width: 862px) {
+    .card-content {
+        height: 175px;
+    }
+}
+
+@media only screen and (max-width: 699px) {
+    .card-content {
+        height: 225px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .card-content {
+        height: 125px;
+    }
+}

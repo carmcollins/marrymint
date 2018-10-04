@@ -1,5 +1,6 @@
 const db = require("../models");
 const Vendors = require("../models/vendors");
+const User = require("../models/users");
 
 // Defining methods for the vendorController
 module.exports = {
@@ -11,8 +12,10 @@ module.exports = {
   },
   
   findById: function(req, res) {
+
     console.log(req.params.id);
     db.Users.findOneAndUpdate({_id: req.user._id}, { $push: { vendors: req.params.id } }, { new: true })
+
   
   .then(function(dbUser) {
     res.json(dbUser);
