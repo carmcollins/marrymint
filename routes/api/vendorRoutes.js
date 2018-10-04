@@ -5,6 +5,9 @@ const vendorController = require("../../controllers/vendorController");
 router.route("/")
   .get(vendorController.findAll);
 
+  router.route("/users/")
+  .get(vendorController.findAllUsersVendors);
+
 
 router
   .route("/:id")

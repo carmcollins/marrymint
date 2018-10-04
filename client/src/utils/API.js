@@ -72,11 +72,6 @@ export default {
   saveUser: function (newUser) {
     return axios.post("/api/users", newUser);
   },
- 
-
-
-
-
   //RSVPS
   // Gets all rsvps for the logged in user
   getRSVPS: function () {
@@ -138,6 +133,13 @@ export default {
       }
     });
   },
+getUsersVendors: function () {
+  return axios.get("/api/vendors/users/", {
+    headers: {
+      Authorization: `Bearer ${this.JWT}`
+    }
+  });
+},
 
 
 
