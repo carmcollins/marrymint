@@ -22,10 +22,10 @@ class Vendors extends Component {
      //allVendors
      getUsersVendors = () => {
         API.getUsersVendors().then(res => {
-            console.log(res.data);
-            this.setState({ vendors: res.data });
-            console.log(this.state.vendors);
-            console.log(this.state.vendors[0].vendors)
+            console.log("DATA: " + JSON.stringify(res.data[0].vendors));
+            this.setState({ vendors: res.data[0].vendors });
+            // console.log(this.state.vendors);
+            // console.log(this.state.vendors[0].vendors)
         }).catch(err => console.log(err));
     };
 
@@ -45,7 +45,7 @@ class Vendors extends Component {
 
             {this.state.vendors.length > 0 ? (
                 <Card>
-                {this.state.vendors[0].vendors.map(vendors => (
+                {this.state.vendors.map(vendors => (
 
                 <div className="col s12 m4">
                     <div className="card" key={vendors._id}>
@@ -63,7 +63,7 @@ class Vendors extends Component {
                 </div>
                 ))}
                 </Card>
-                 ) : (<h4 className="subtitle center red-text text-accent-1">No Vendors Saved Yet</h4>)}
+                ) : (<h4 className="subtitle center red-text text-accent-1">No Vendors Saved Yet</h4>)}
             </div>
         </div>
     </div>

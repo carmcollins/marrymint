@@ -54,10 +54,10 @@ class FindVendors extends Component {
                         <a className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton("Planner")}>Planners</a>
                         <a className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton("Photographer")}>Photographers</a>
                         <a className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton("Florist")}>Florists</a>
-                        <a className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton("Rental")}>Rentals</a>
+                        <a className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton("Rentals")}>Rentals</a>
                         <a className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton("Venue")}>Venues</a>
                         <a className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton("Caterer")}>Caterers</a>
-                        <a className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton("Baker")}>Bakers</a>
+                        <a className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton("Bakers")}>Bakers</a>
                         <a className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton("Stationery")}>Stationery</a>
                         <a className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton("Videographer")}>Videographers</a>
                         <a className="btn-small filter-btn red accent-1" onClick={() => this.handleFilterButton("Beauty")}>Beauty</a>

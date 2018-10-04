@@ -44,7 +44,7 @@ Vendors.insertMany([
     },
     {
         "name": "Sweet Treets", 
-        "category": "Desserts",
+        "category": "Bakers",
         "link": "http://www.sweettreetsbakery.com/",
         "photo": "https://i.postimg.cc/KYdkLQ3Y/sweet-treets.png",
         "description": "Irresistible wedding cakes with a modern twist."
@@ -93,7 +93,7 @@ Vendors.insertMany([
     },
     {
         "name": "Coco Paloma", 
-        "category": "Desserts",
+        "category": "Bakers",
         "link": "http://cocopalomadesserts.com/",
         "photo": "https://i.postimg.cc/PqFb7mpG/coco-paloma.png",
         "description": "Classic wedding cakes with a perfect finish."
@@ -212,7 +212,7 @@ Vendors.insertMany([
     },
     {
         "name": "Walton's", 
-        "category": "Desserts",
+        "category": "Bakers",
         "link": "https://www.waltonsfancyandstaple.com/",
         "photo": "https://i.postimg.cc/cHwKcYfB/waltons.png",
         "description": "Simply delicious desserts like your mom used to make."
