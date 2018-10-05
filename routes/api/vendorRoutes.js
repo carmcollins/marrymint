@@ -5,18 +5,17 @@ const vendorController = require("../../controllers/vendorController");
 router.route("/")
   .get(vendorController.findAll);
 
-  router.route("/users/")
+router.route("/users/")
   .get(vendorController.findAllUsersVendors);
 
-  router.route("/user/")
+router.route("/user/")
   .get(vendorController.findUser);
 
 router
   .route("/:id")
   .get(vendorController.findById);
 
-
-  router.route("/:category")
+router.route("/:category")
   .get(vendorController.findByCategory);
 
 module.exports = router;
