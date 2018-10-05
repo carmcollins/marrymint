@@ -16,6 +16,10 @@ findUser: function(req,res) {
   .then(dbVendors => res.json(dbVendors))
   .catch(err => res.status(422).json(err));
 },
+deleteVendor: function(req,res) {
+  db.Users.findOneAndUpdate({_id: req.user._id}, { $pull: { vendors: req.body.vendorsId }}, {new:true}).then(dbVendors => res.json(dbVendors))
+  .catch(err => res.status(422).json(err));
+},
 
   findById: function(req, res) {
 

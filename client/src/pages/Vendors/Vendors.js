@@ -24,10 +24,15 @@ class Vendors extends Component {
         API.getUsersVendors().then(res => {
             console.log("DATA: " + JSON.stringify(res.data[0].vendors));
             this.setState({ vendors: res.data[0].vendors });
-            // console.log(this.state.vendors);
-            // console.log(this.state.vendors[0].vendors)
         }).catch(err => console.log(err));
     };
+
+    //handleAddButton
+    handleDeleteButton = (vendorsid) => {
+        API.deleteVendor(vendorsid).then(() => {
+            this.getUsersVendors();
+        })
+    }
 
 
     render() {
@@ -51,6 +56,7 @@ class Vendors extends Component {
                     <div className="card" key={vendors._id}>
                         <div className="card-image">
                             <img src={vendors.photo} alt="marrymint vendor" />
+                            <a className="btn-floating btn-large halfway-fab waves-effect waves-light teal lighten-3" onClick={() => this.handleDeleteButton(vendors._id)}><i className="material-icons">close</i></a>
                         </div>
                         <div className="card-content">
                             <p className="card-title red-text text-accent-1">{vendors.name}</p>
