@@ -66,4 +66,3 @@ class Vendors extends Component {
 };
 
 export default Vendors;
-

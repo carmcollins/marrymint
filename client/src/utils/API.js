@@ -114,7 +114,7 @@ export default {
     });
   },
 
-  deleteVendor: function(vendorsId) {
+  deleteVendor: function (vendorsId) {
     return axios.put("/api/vendors/", {vendorsId:vendorsId}, {
       headers: {
         Authorization: `Bearer ${this.JWT}`
