@@ -59,9 +59,8 @@ class Home extends Component {
     render() {
         const { redirect } = this.state;
 
-        if(redirect) {
-            return (<Redirect to ={{ pathname: "./to-do-list" }} />)
-        };
+        if(redirect)
+        return (<Redirect to ={{ pathname: "./to-do-list" }} />)
         
         return (
             <div className="home-bg">
