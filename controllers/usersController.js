@@ -3,57 +3,38 @@ require('dotenv').config();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt-nodejs");
 
-// Defining methods for the userController
 module.exports = {
   findById: function (req, res) {
     db.Users
       .findById(req.user._id)
       .then(dbUser => {
-        console.log(dbUser);
         res.json(dbUser);})
       .catch(err => res.status(422).json(err))
-      console.log("load tasks with user" + res);
   },
 
-  // findAndUpdate: function (req, res) {
-  //   db.Users
-  //     .findById(req.user._id)
-  //     .then(dbUser => res.json(dbUser))
-  //     .catch(err => res.status(422).json(err));
-  // },
-
   findOne: function (req, res) {
-    console.log("Email: " + req.body.email.email);
-    console.log("PW: " + req.body.email.password);
     db.Users
       .findOne({
         email: req.body.email.email
       }, (err, user) => {
         if (!user) {
-          console.log("error email: " + err);
           return res.status(401).send({ success: false });
         } else {
           user.comparePassword(req.body.email.password, (err, isMatch) => {
             if (err || !isMatch) {
-              console.log("error password: " + err);
               return res.status(401).send({ success: false });
-            }
-            else {
-              console.log("successful login: " + isMatch);
+            } else {
               userid = {_id: user._id};
               const token = jwt.sign({ _id: user._id }, process.env.SECRET_KEY);
-
-              console.log("TOKEN: " + token);
-
               return res.status(200).send({ success: true, token: token, userid: userid });
             }
           });
         }
-      });
-
+      }
+    );
   },
-  create: function (req, res) {
 
+  create: function (req, res) {
     const newUser = {
       email: req.body.email,
       password: req.body.password,
@@ -230,7 +211,7 @@ module.exports = {
           completed: false
         }]
     };
-    console.log(newUser);
+
     db.Users
       .create(newUser)
       .then(dbuser => res.json(dbuser))
