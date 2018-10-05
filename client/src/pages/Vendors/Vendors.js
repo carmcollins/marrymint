@@ -24,6 +24,11 @@ class Vendors extends Component {
         }).catch(err => console.log(err));
     };
 
+    handleDeleteButton = (vendorsid) => {
+        API.deleteVendor(vendorsid).then(() => {
+            this.getUsersVendors();
+        });
+    };
 
     render() {
         return (   

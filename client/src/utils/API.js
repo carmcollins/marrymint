@@ -114,6 +114,14 @@ export default {
     });
   },
 
+  deleteVendor: function(vendorsId) {
+    return axios.put("/api/vendors/", {vendorsId:vendorsId}, {
+      headers: {
+        Authorization: `Bearer ${this.JWT}`
+      }
+    });
+  },
+
   getVendorByCategory: function (category) {
     return axios.get("/api/vendors/" + category, {
       headers: {

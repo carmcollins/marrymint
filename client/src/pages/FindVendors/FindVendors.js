@@ -24,6 +24,7 @@ class FindVendors extends Component {
 
     handleAllButton = () => {
         this.getAllVendors();
+        window.location.reload();
     };
 
     handleFilterButton = (category) => {
