@@ -137,7 +137,7 @@ Vendors.insertMany([
         "name": "Avery Allen", 
         "category": "Beauty",
         "link": "https://www.averyallenmakeup.com/",
-        "photo": "https://i.postimg.cc/HxqwYd9B/avery-allen.png",
+        "photo": "https://i.postimg.cc/q77jGYQf/avery-allen.png",
         "description": "Modern makeup artist who loves a pop of color."
     },
     {
