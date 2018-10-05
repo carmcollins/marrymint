@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const rsvpController = require("../../controllers/rsvpController");
+const rsvpController = require("../../controllers/rsvpcontroller");
 
 // Matches with "/api/rsvps/"
 router
