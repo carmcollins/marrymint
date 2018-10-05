@@ -142,6 +142,14 @@ getUsersVendors: function () {
   });
 },
 
+getUserForVendor: function () {
+  return axios.get("/api/vendors/user/", {
+    headers: {
+      Authorization: `Bearer ${this.JWT}`
+    }
+  });
+},
+
 
 
   //TASKS

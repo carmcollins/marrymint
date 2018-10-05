@@ -9,7 +9,8 @@ class FindVendors extends Component {
 
     state = {
         vendors: [],
-        filterVendor: []
+        filterVendor: [],
+        userVendors: []
     }
 
     componentDidMount() {
@@ -38,7 +39,15 @@ class FindVendors extends Component {
 
     //handleAddButton
     handleAddButton = (vendorid) => {
-        API.getVendorById(vendorid);
+        API.getUserForVendor().then(res => {
+            console.log(res);
+            this.setState({userVendors : res.data[0].vendors})
+            const vendorMatch =this.state.userVendors.filter(userVendors => userVendors === vendorid)
+            if (vendorMatch.length === 0){
+                API.getVendorById(vendorid);
+            }
+        }).catch(err => console.log(err));
+
     }
 
     render() {
