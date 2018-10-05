@@ -118,7 +118,13 @@ export default {
       }
     } );
   },
-  // Gets the book with the given id
+  deleteVendor: function (vendorsId) {
+    return axios.put("/api/vendors/", {vendorsId:vendorsId}, {
+      headers: {
+        Authorization: `Bearer ${this.JWT}`
+      }
+    } );
+  },
   getVendorByCategory: function (category) {
     console.log("category: " + category);
     return axios.get("/api/vendors/" + category, {

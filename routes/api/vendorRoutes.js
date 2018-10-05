@@ -11,6 +11,9 @@ router.route("/")
   router.route("/user/")
   .get(vendorController.findUser);
 
+  router.route("/")
+  .put(vendorController.deleteVendor);
+
 router
   .route("/:id")
   .get(vendorController.findById);
