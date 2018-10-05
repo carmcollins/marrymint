@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import "./RSVPs.css";
 import Heading from "../../components/Heading";
 import List from "../../components/List"
 import API from "../../utils/API";
+import "./RSVPs.css";
 
 class RSVPs extends Component {
-
 
     state = {
         name: "",
@@ -15,85 +14,71 @@ class RSVPs extends Component {
     };
 
     componentDidMount() {
-
         this.getRSVPS()
     };
 
     getRSVPS = () => {
         API.getRSVPS()
-            .then(res => {
-console.log(res)
-                const stateObj = {
-                    invited: [],
-                    attending: [],
-                    notAttending: []
-                };
+        .then(res => {
+            const stateObj = {
+                invited: [],
+                attending: [],
+                notAttending: []
+            };
 
-                for (let i = 0; i < res.data.RSVPS.length; i++) {
-                    if (res.data.RSVPS[i].invited && !res.data.RSVPS[i].attending && !res.data.RSVPS[i].notAttending) {
-                        stateObj.invited.push(res.data.RSVPS[i])
-                    }
-                    else if (res.data.RSVPS[i].invited && res.data.RSVPS[i].attending && !res.data.RSVPS[i].notAttending) {
-                        stateObj.attending.push(res.data.RSVPS[i])
-                    }
-                    else if (res.data.RSVPS[i].invited && !res.data.RSVPS[i].attending && res.data.RSVPS[i].notAttending) {
-                        stateObj.notAttending.push(res.data.RSVPS[i])
-                    }
-
+            for (let i = 0; i < res.data.RSVPS.length; i++) {
+                if (res.data.RSVPS[i].invited && !res.data.RSVPS[i].attending && !res.data.RSVPS[i].notAttending) {
+                    stateObj.invited.push(res.data.RSVPS[i]);
                 }
-                this.setState(stateObj);
-            }
-            ).catch(err => console.log(err));
+                else if (res.data.RSVPS[i].invited && res.data.RSVPS[i].attending && !res.data.RSVPS[i].notAttending) {
+                    stateObj.attending.push(res.data.RSVPS[i]);
+                }
+                else if (res.data.RSVPS[i].invited && !res.data.RSVPS[i].attending && res.data.RSVPS[i].notAttending) {
+                    stateObj.notAttending.push(res.data.RSVPS[i]);
+                };
+            };
+
+            this.setState(stateObj);
+
+        }).catch(err => console.log(err));
     };
 
     handleInputChange = event => {
         const { name, value } = event.target;
-        this.setState({
-            [name]: value
-        });
+        this.setState({ [name]: value });
     };
 
     handleFormSubmit = event => {
         event.preventDefault();
-        console.log( "this is the new name: " + this.state.name)
+    
         if (this.state.name) {
-            API.addRSVP(this.state.name
-            ).then(this.setState({
-                name: ""
-            }))
+            API.addRSVP(this.state.name)
+            .then(this.setState({ name: "" }))
             .catch(err => console.log(err.response));
-        }
+        };
 
         this.getRSVPS();
-
     };
 
     handleAttend = (RSVPid) => {
-        console.log(RSVPid)
         API.updateRSVPAttend(RSVPid).then (() => {
-            console.log("AM I RUNNING");
             this.getRSVPS();
         });
     };
-
 
     handleNoAttend = (RSVPid) => {
-        console.log(RSVPid)
         API.updateRSVPNotAttend(RSVPid).then (() => {
-            console.log("AM I RUNNING");
             this.getRSVPS();
         });
     };
 
-
     render() {
-
         return (
             <div>
                 <Heading bg="rsvpHead" title="RSVPs" subtitle="Input all of your wedding guests' names into our database, and easily track their attendance as your invite responses come in." />
                 <div className="container">
                     <div className="row">
-                        <div className="col s12 m12 l12">
+                        <div className="col s12">
                             <div className="row">
                                 <form className="col s12">
                                     <div className="rsvp-form">
@@ -157,8 +142,8 @@ console.log(res)
                     </div>
                 </div>
             </div>
-        )
-    }
+        );
+    };
 };
                 
 export default RSVPs;

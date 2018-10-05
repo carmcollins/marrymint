@@ -4,6 +4,7 @@ import API from "../../utils/API";
 import { Redirect } from "react-router"
 
 class Home extends Component {
+
     state = {
         email: "",
         password: "",
@@ -12,12 +13,9 @@ class Home extends Component {
         redirect:false
     };
 
-
     handleInputChange = event => {
         const { name, value } = event.target;
-        this.setState({
-            [name]: value
-        });
+        this.setState({ [name]: value });
     };
 
     handleFormSubmit = event => {
@@ -28,33 +26,30 @@ class Home extends Component {
                 email: this.state.email,
                 password: this.state.password
             })
-                .catch(err => console.log(err.response))
-                .then(() => {
-                console.log("Email: " + this.state.email);
-                console.log("Password: " + this.state.password);
-                    API.loginUser({
-                        email: this.state.email,
-                        password: this.state.password
-                    }).then(() =>
+            .catch(err => console.log(err.response))
+            .then(() => {
+                API.loginUser({
+                    email: this.state.email,
+                    password: this.state.password
+                }).then(() =>
                     this.setState({redirect: true})
-                    ).then(()=> API.isLoggedIn())
-                })
-        }
+                ).then(()=> 
+                    API.isLoggedIn())
+            });
+        };
     };
 
     handleFormLogin = event => {
-
         event.preventDefault();
         if (this.state.email && this.state.password) {
             API.loginUser({
                 email: this.state.email,
                 password: this.state.password
             }).then(() =>
-            this.setState({redirect: true})
+                this.setState({redirect: true})
             ).then(()=> API.isLoggedIn())
-        }
+        };
 
-        //Clears form
         this.setState({
             email: "",
             password: ""
@@ -62,11 +57,12 @@ class Home extends Component {
     };
 
     render() {
-        const { redirect } = this.state
-        if(redirect)
-        return (<Redirect to ={{
-            pathname: "./to-do-list"
-        }} />)
+        const { redirect } = this.state;
+
+        if(redirect) {
+            return (<Redirect to ={{ pathname: "./to-do-list" }} />)
+        };
+        
         return (
             <div className="home-bg">
                 <div className="row">
@@ -85,15 +81,11 @@ class Home extends Component {
                                                 onChange={this.handleInputChange} />
                                             <label htmlFor="brides-name">Name</label>
                                         </div>
-                                    </div>
-                                    <div className="row">
                                         <div className="input-field col s12">
                                             <input id="signup-email" type="email" className="validate" name="email" value={this.state.email}
                                                 onChange={this.handleInputChange} />
                                             <label htmlFor="signup-email">Email</label>
                                         </div>
-                                    </div>
-                                    <div className="row">
                                         <div className="input-field col s12">
                                             <input id="signup-password" type="password" className="validate" name="password" value={this.state.password}
                                                 onChange={this.handleInputChange} />
@@ -107,7 +99,7 @@ class Home extends Component {
                                     </div>
                                     <br />
                                     <div className="center">
-                                        <a id="login-here" className="waves-effect waves-teal btn-flat">Have an account? Log in here</a>
+                                        <a id="login-here" className="waves-effect waves-teal btn-flat">Have an account? Log in</a>
                                     </div>
                                 </div>
                             </form>
@@ -135,7 +127,7 @@ class Home extends Component {
                                     </div>
                                     <br />
                                     <div className="center">
-                                        <a id="signup-here" className="waves-effect waves-teal btn-flat">Need an account? Sign up here</a>
+                                        <a id="signup-here" className="waves-effect waves-teal btn-flat">Need an account? Sign up</a>
                                     </div>
                                 </div>
                             </form>
@@ -143,8 +135,8 @@ class Home extends Component {
                     </div>
                 </div>
             </div>
-        )
-    }
-}
+        );
+    };
+};
 
 export default Home;

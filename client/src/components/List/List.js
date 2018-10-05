@@ -3,6 +3,7 @@ import React from "react";
 const List = ({ children }) => (
   <div>
     {children}
-</div>
+  </div>
 );
+
 export default List;

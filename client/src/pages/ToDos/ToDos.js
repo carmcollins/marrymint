@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import Heading from "../../components/Heading"
 import List from "../../components/List"
-import "./ToDos.css";
 import API from "../../utils/API";
+import "./ToDos.css";
 
 class ToDos extends Component {
-    state = {
 
+    state = {
         user_id: "",
         task_id: "", 
         month12: [],
@@ -16,7 +16,6 @@ class ToDos extends Component {
         month2: [],
         completed: [],
         message: "All tasks for this month have been completed!"
-
     };
 
     componentDidMount() {
@@ -24,52 +23,48 @@ class ToDos extends Component {
     };
 
     handleCompleted = (taskid) => {
-        console.log(taskid);
         API.updateTask(taskid)
         .then(() => {
             this.getTasks();
         });
     };
 
-    //this id needs to be the req.user._id
     getTasks = () => {
         API.getUser()
-            .then(res => {
-                const stateObj = {
-                    month12: [],
-                    month9: [],
-                    month6: [],
-                    month4: [],
-                    month2: [],
-                    completed: []
-                };
-                for (let i = 0; i < res.data.tasks.length; i++) {
-                    if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "12") {
-                        stateObj.month12.push(res.data.tasks[i])
-                    }
-                    else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "9") {
-                        stateObj.month9.push(res.data.tasks[i])
-                    }
-                    else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "6") {
-                        stateObj.month6.push(res.data.tasks[i])
-                    }
-                    else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "4") {
-                        stateObj.month4.push(res.data.tasks[i])
-                    }
-                    else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "2") {
-                        stateObj.month2.push(res.data.tasks[i])
-                    }
-                    else if (res.data.tasks[i].completed) {
-                        stateObj.completed.push(res.data.tasks[i])
-                    }
-                }
+        .then(res => {
+            const stateObj = {
+                month12: [],
+                month9: [],
+                month6: [],
+                month4: [],
+                month2: [],
+                completed: []
+            };
 
-                this.setState(stateObj);
-            }
-            
-            )
-            .catch(err => console.log(err));
-            
+            for (let i = 0; i < res.data.tasks.length; i++) {
+                if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "12") {
+                    stateObj.month12.push(res.data.tasks[i]);
+                }
+                else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "9") {
+                    stateObj.month9.push(res.data.tasks[i]);
+                }
+                else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "6") {
+                    stateObj.month6.push(res.data.tasks[i]);
+                }
+                else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "4") {
+                    stateObj.month4.push(res.data.tasks[i]);
+                }
+                else if (!res.data.tasks[i].completed && res.data.tasks[i].timeCategory === "2") {
+                    stateObj.month2.push(res.data.tasks[i]);
+                }
+                else if (res.data.tasks[i].completed) {
+                    stateObj.completed.push(res.data.tasks[i]);
+                };
+            };
+
+            this.setState(stateObj);
+
+        }).catch(err => console.log(err));
     };
 
 render() {
@@ -91,7 +86,6 @@ render() {
                         </List>
                     ) : (<p className="collection-item center">{this.state.message}</p>)}
                 </ul>
-
                 <h4 className="subtitle center">9 Months Out</h4>
                 <ul className="collection to-do-list">
                     {this.state.month9.length ? (
@@ -106,7 +100,6 @@ render() {
                         </List>
                     ) : (<p className="collection-item center">{this.state.message}</p>)}
                 </ul>
-
                 <h4 className="subtitle center">6 Months Out</h4>
                 <ul className="collection to-do-list">
                     {this.state.month9.length ? (
@@ -121,7 +114,6 @@ render() {
                         </List>
                     ) : (<p className="collection-item center">{this.state.message}</p>)}
                 </ul>
-
                 <h4 className="subtitle center">4 Months Out</h4>
                 <ul className="collection to-do-list">
                     {this.state.month4.length ? (
@@ -136,7 +128,6 @@ render() {
                         </List>
                     ) : (<p className="collection-item center">{this.state.message}</p>)}
                 </ul>
-
                 <h4 className="subtitle center">2 Months Out</h4>
                 <ul className="collection to-do-list">
                     {this.state.month2.length ? (
@@ -151,7 +142,6 @@ render() {
                         </List>
                     ) : (<p className="collection-item center">{this.state.message}</p>)}
                 </ul>
-
                 <h4 className="subtitle center">Completed!</h4>
                 <ul className="collection to-do-list">
                     {this.state.completed.length ? (
@@ -168,8 +158,8 @@ render() {
                 </ul>
             </div>
         </div>
-        )
-    }
-}
+        );
+    };
+};
 
 export default ToDos;

@@ -26,12 +26,9 @@
         // Makes the sidebar nav collapsible / functional on mobile
         $('.sidenav').sidenav();
 
-        // Allows users to pick date from a pop-up calendar
-        $(".datepicker").datepicker();
-
-        // By default, show sign up form + hide log in form
-        $("#signup-form").hide();
+        // By default, show log in form + hide sign up form
         $("#login-form").show();
+        $("#signup-form").hide();
 
         // Hides sign up form + shows log in form
         $("#login-here").on("click", function() {

@@ -10,8 +10,8 @@ const UsersSchema = new Schema({
   brideName: { type: String, required: true },
   vendors: [{type: Schema.Types.ObjectId,
     ref: 'Vendors'}],
-   tasks:[tasksSchema],
-   RSVPS:[RSVPSchema]
+  tasks:[tasksSchema],
+  RSVPS:[RSVPSchema]
 });
 
 UsersSchema.pre("save", function (next) {
@@ -20,19 +20,21 @@ UsersSchema.pre("save", function (next) {
       if (err) {
         console.log(err);
         return next(err);
-      }
+      };
       this.password = hash;
       return next();
-    })
-  }
+    });
+  };
 });
 
 UsersSchema.methods.comparePassword = function (pass, cb) {
   bcrypt.compare(pass, this.password, function (err, isMatch) {
-    if (err) { return cb(err); }
+    if (err) { 
+      return cb(err);
+    }
     cb(null, isMatch);
-  })
-}
+  });
+};
 
 const Users = mongoose.model("Users", UsersSchema);
 

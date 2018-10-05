@@ -11,8 +11,8 @@ class NotFound extends Component {
                     </div>
                 </div>
             </div>
-        )
-    }
-}
+        );
+    };
+};
 
 export default NotFound;
