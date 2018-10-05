@@ -85,15 +85,11 @@ class Home extends Component {
                                                 onChange={this.handleInputChange} />
                                             <label htmlFor="brides-name">Name</label>
                                         </div>
-                                    </div>
-                                    <div className="row">
                                         <div className="input-field col s12">
                                             <input id="signup-email" type="email" className="validate" name="email" value={this.state.email}
                                                 onChange={this.handleInputChange} />
                                             <label htmlFor="signup-email">Email</label>
                                         </div>
-                                    </div>
-                                    <div className="row">
                                         <div className="input-field col s12">
                                             <input id="signup-password" type="password" className="validate" name="password" value={this.state.password}
                                                 onChange={this.handleInputChange} />
@@ -107,7 +103,7 @@ class Home extends Component {
                                     </div>
                                     <br />
                                     <div className="center">
-                                        <a id="login-here" className="waves-effect waves-teal btn-flat">Have an account? Log in here</a>
+                                        <a id="login-here" className="waves-effect waves-teal btn-flat">Have an account? Log in</a>
                                     </div>
                                 </div>
                             </form>
@@ -135,7 +131,7 @@ class Home extends Component {
                                     </div>
                                     <br />
                                     <div className="center">
-                                        <a id="signup-here" className="waves-effect waves-teal btn-flat">Need an account? Sign up here</a>
+                                        <a id="signup-here" className="waves-effect waves-teal btn-flat">Need an account? Sign up</a>
                                     </div>
                                 </div>
                             </form>

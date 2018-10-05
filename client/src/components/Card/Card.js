@@ -3,6 +3,7 @@ import React from "react";
 const Card = ({ children }) => (
   <div>
     {children}
-</div>
+  </div>
 );
+
 export default Card;

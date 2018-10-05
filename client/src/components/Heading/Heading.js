@@ -1,9 +1,9 @@
 import React from "react";
-import "./Heading.css";
 import Confetti from "./confetti.jpg";
 import Modern from "./modern.jpg";
 import Safari from "./safari.jpg";
 import Scroll from "./scroll.jpg";
+import "./Heading.css";
 
 const styles = {
     toDoHead: {
