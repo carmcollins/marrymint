@@ -8,6 +8,8 @@ router.route("/")
   router.route("/users/")
   .get(vendorController.findAllUsersVendors);
 
+  router.route("/user/")
+  .get(vendorController.findUser);
 
 router
   .route("/:id")
