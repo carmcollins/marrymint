@@ -6,7 +6,7 @@ A project management tool for brides and grooms planning their own wedding.
 
 Wedding planning is supposed to be a fun and exciting time when soon-to-be brides and grooms get to celebrate with their friends and family. In reality, planning a wedding can be one of the most stressful things couples do together.
 
-We created Marrymint as an online project management tool for help brides and grooms streamline the wedding planning process. After creating an account, users can:
+We created Marrymint as an online project management tool to help brides and grooms streamline the wedding planning process. After creating an account, users can:
 * Manage a to-do list created by a wedding professional
 * Track their guests' attendance as their RSVPs come in
 * Search for trustworthy vendors from a curated list
