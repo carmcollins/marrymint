@@ -65,7 +65,7 @@ class FindVendors extends Component {
                     <div className="row">
                         {this.state.filterVendor.length > 0 ? (
                             <Card>
-                                {this.state.filterVendor.map(vendors => (
+                                {this.state.filterVendor.sort((a, b) => a.number - b.number).map(vendors => (
                                     <div className="col s12 m4">
                                         <div className="card" key={vendors._id}>
                                             <div className="card-image">
@@ -85,7 +85,7 @@ class FindVendors extends Component {
                             </Card>
                         ) : (
                             <Card>
-                                {this.state.vendors.map(vendors => (
+                                {this.state.vendors.sort((a, b) => a.number - b.number).map(vendors => (
                                     <div className="col s12 m4">
                                         <div className="card" key={vendors._id}>
                                             <div className="card-image">

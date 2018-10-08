@@ -8,13 +8,16 @@ const Vendors = require("./models/vendors");
 
 Vendors.insertMany([
     {
+        "number": 1,
         "name": "Bird Dog Wedding", 
         "category": "Planner",
         "link": "https://www.birddogwedding.com/",
         "photo": "https://i.postimg.cc/T3tnyrcy/bird-dog-wedding.png",
         "description": "Colorful and fun events for the modern bride."
+        
     },
     {
+        "number": 2,
         "name": "Birch & Brass", 
         "category": "Rentals",
         "link": "https://www.birchandbrass.com/",
@@ -22,6 +25,7 @@ Vendors.insertMany([
         "description": "Mid-century modern rentals for the color-loving bride."
     },
     {
+        "number": 3,
         "name": "Blue Eye Brown Eye", 
         "category": "Stationery",
         "link": "https://blueeyebrowneye.com/",
@@ -29,6 +33,7 @@ Vendors.insertMany([
         "description": "Calligrapher with a passion for fun colors and patterns."
     },
     {
+        "number": 4,
         "name": "Barr Mansion", 
         "category": "Venue",
         "link": "http://barrmansion.com/",
@@ -36,6 +41,7 @@ Vendors.insertMany([
         "description": "Modern meets traditional at this East Austin mansion."
     },
     {
+        "number": 5,
         "name": "36th Street Events", 
         "category": "Planner",
         "link": "http://www.36thstreetevents.com/",
@@ -43,6 +49,7 @@ Vendors.insertMany([
         "description": "Classic weddings with a touch of romance."
     },
     {
+        "number": 6,
         "name": "Sweet Treets", 
         "category": "Bakers",
         "link": "http://www.sweettreetsbakery.com/",
@@ -50,6 +57,7 @@ Vendors.insertMany([
         "description": "Irresistible wedding cakes with a modern twist."
     },
     {
+        "number": 7,
         "name": "Davy Gray", 
         "category": "Florist",
         "link": "http://www.davygray.com/",
@@ -57,6 +65,7 @@ Vendors.insertMany([
         "description": "Bohemian florist creating asymmetrical arrangements."
     },
     {
+        "number": 8,
         "name": "La Tavola Linens", 
         "category": "Rentals",
         "link": "https://latavolalinen.com/",
@@ -64,6 +73,7 @@ Vendors.insertMany([
         "description": "Unique linen patterns shipped to your front door."
     },
     {
+        "number": 9,
         "name": "Little Gray Films", 
         "category": "Videographer",
         "link": "http://www.graysencummings.com/",
@@ -71,6 +81,7 @@ Vendors.insertMany([
         "description": "Simple and sweet wedding films set to indie music."
     },
     {
+        "number": 10,
         "name": "Bricolage", 
         "category": "Florist",
         "link": "http://www.bricolagecf.com/",
@@ -78,6 +89,7 @@ Vendors.insertMany([
         "description": "Dark and moody florals for the glamorous bride."
     },
     {
+        "number": 11,
         "name": "Remi & Gold", 
         "category": "Florist",
         "link": "http://remiandgold.com/",
@@ -85,6 +97,7 @@ Vendors.insertMany([
         "description": "Big and bright florals always with a pop of hot pink."
     },
     {
+        "number": 12,
         "name": "Royal Fig", 
         "category": "Caterer",
         "link": "https://www.royalfig.com/",
@@ -92,6 +105,7 @@ Vendors.insertMany([
         "description": "Classic wedding dinners made with local ingredients."
     },
     {
+        "number": 13,
         "name": "Coco Paloma", 
         "category": "Bakers",
         "link": "http://cocopalomadesserts.com/",
@@ -99,6 +113,7 @@ Vendors.insertMany([
         "description": "Classic wedding cakes with a perfect finish."
     },
     {
+        "number": 14,
         "name": "Kayla Snell", 
         "category": "Photographer",
         "link": "http://www.kaylasnell.com/",
@@ -106,6 +121,7 @@ Vendors.insertMany([
         "description": "Classic photographer with a passion for light and love."
     },
     {
+        "number": 15,
         "name": "Boarding School", 
         "category": "Stationery",
         "link": "http://www.boardingschoolcollective.com/",
@@ -113,6 +129,7 @@ Vendors.insertMany([
         "description": "Romantic, modern calligrapher and paper designer."
     },
     {
+        "number": 16,
         "name": "Sophie Epton", 
         "category": "Photographer",
         "link": "http://www.sophieepton.com/",
@@ -120,6 +137,7 @@ Vendors.insertMany([
         "description": "Romantic film photographer with a love for details."
     },
     {
+        "number": 17,
         "name": "Loot Rentals", 
         "category": "Rentals",
         "link": "http://lootrentals.com/",
@@ -127,6 +145,7 @@ Vendors.insertMany([
         "description": "Vintage rentals for designing a cozy, handmade party."
     },
     {
+        "number": 18,
         "name": "Peyton Frank", 
         "category": "Videographer",
         "link": "http://www.peytonannefrank.com/",
@@ -134,13 +153,15 @@ Vendors.insertMany([
         "description": "Romantic videographer who shines with short films."
     },
     {
+        "number": 19,
         "name": "Avery Allen", 
         "category": "Beauty",
         "link": "https://www.averyallenmakeup.com/",
-        "photo": "https://i.postimg.cc/HxqwYd9B/avery-allen.png",
+        "photo": "https://i.postimg.cc/q77jGYQf/avery-allen.png",
         "description": "Modern makeup artist who loves a pop of color."
     },
     {
+        "number": 20,
         "name": "Kindle & Gather", 
         "category": "Planner",
         "link": "http://www.kindleandgather.com/",
@@ -148,6 +169,7 @@ Vendors.insertMany([
         "description": "Minimal and modern weddings for the simple bride."
     },
     {
+        "number": 21,
         "name": "The Peached Tortilla", 
         "category": "Caterer",
         "link": "https://thepeachedtortilla.com/",
@@ -155,6 +177,7 @@ Vendors.insertMany([
         "description": "Asian meets Southern at this catering food truck."
     },
     {
+        "number": 22,
         "name": "LoLa Beauty", 
         "category": "Beauty",
         "link": "http://www.lolabeautyatx.com/",
@@ -162,6 +185,7 @@ Vendors.insertMany([
         "description": "A team of makeup artists to beautify all your girls."
     },
     {
+        "number": 23,
         "name": "Contigo", 
         "category": "Caterer",
         "link": "https://contigotexas.com/",
@@ -169,6 +193,7 @@ Vendors.insertMany([
         "description": "Homegrown favorites known for their pig roast parties."
     },
     {
+        "number": 24,
         "name": "Fine Day Press", 
         "category": "Stationery",
         "link": "https://www.finedaypress.com/",
@@ -176,6 +201,7 @@ Vendors.insertMany([
         "description": "Colorful and fresh stationery for the modern bride."
     },
     {
+        "number": 25,
         "name": "Sisterwolf", 
         "category": "Videographer",
         "link": "http://www.sisterwolfstudio.com/",
@@ -183,6 +209,7 @@ Vendors.insertMany([
         "description": "Bohemian videographer with an eye for the details."
     },
     {
+        "number": 26,
         "name": "Prospect House", 
         "category": "Venue",
         "link": "http://www.prospecthousetx.com/",
@@ -190,6 +217,7 @@ Vendors.insertMany([
         "description": "The perfect modern, minimal, all-white wedding venue."
     },
     {
+        "number": 27,
         "name": "Paige Newton", 
         "category": "Photographer",
         "link": "http://www.paigenewtonweddings.com/",
@@ -197,6 +225,7 @@ Vendors.insertMany([
         "description": "Photojournalistic photographer with a modern touch."
     },
     {
+        "number": 28,
         "name": "Makenzi Laine", 
         "category": "Beauty",
         "link": "https://makenzilaine.com/",
@@ -204,6 +233,7 @@ Vendors.insertMany([
         "description": "Artist who perfectly achieves the “no makeup” look."
     },
     {
+        "number": 29,
         "name": "Mercury Hall", 
         "category": "Venue",
         "link": "https://www.mercuryhall.com/",
@@ -211,6 +241,7 @@ Vendors.insertMany([
         "description": "An old-school Austin favorite with a pop of color."
     },
     {
+        "number": 30,
         "name": "Walton's", 
         "category": "Bakers",
         "link": "https://www.waltonsfancyandstaple.com/",
